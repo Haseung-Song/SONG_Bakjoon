@@ -5,11 +5,11 @@ import java.util.Scanner;
 public class Q_10998_곱하기 {
 
 	public static void main(String[] args) {
-	Scanner Jc = new Scanner(System.in);
-	int A = Jc.nextInt();
-	int B = Jc.nextInt();
+	Scanner Jc = new Scanner(System.in); // JC스캐너를 생성한다.
+	int A = Jc.nextInt(); // 처음입력한 수를 정수 A로 받아드린다.
+	int B = Jc.nextInt(); // 두번째 입력한 수를 정수 B로 한다.
 	
-	System.out.println(A*B);
+	System.out.println(A*B); // 입력받은 A와 B를 곱한값을 출력한다.
 	
 	Jc.close();
 
