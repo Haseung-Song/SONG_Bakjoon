@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+public class Q_1001_에이마이너스비 {
+
+	public static void main(String[] args) {
+	Scanner ic = new Scanner(System.in); // 스캐너 ic를 생성한다.
+	int A = ic.nextInt(); // 첫번째 입력받은 값을 int A로 한다.
+	int B = ic.nextInt(); // 두번째 입력받은 값을 int B로 한다.
+		
+	System.out.println(A-B); // 입력받은 A,B값을 뺀것을 출력한다.
+		
+	ic.close();
+		
+		
+	}
+
+}
