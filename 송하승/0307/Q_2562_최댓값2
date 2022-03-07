@@ -1,0 +1,33 @@
+package Bakjoon_step_by_step;
+
+import java.util.Scanner;
+
+public class Q_2562_최댓값2 {
+	static final int N = 9; // 정적 변수 선언 : N = 9
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); // 입출력 함수 선언
+
+		int[] num = new int[N]; // 1차원 배열 생성 및 초기화(원소의 개수 : N개)
+
+		int max = Integer.MIN_VALUE; // max값 초기화
+		int idx = -1; // 인덱스값 초기화
+
+		for (int n = 0; n < num.length; n++) { // 원소의 개수만큼
+			num[n] = sc.nextInt(); // 원소 입력 받기
+
+			// max값 알고리즘, 인덱스값 알고리즘
+			if (max < num[n]) { // 어떤 원소가 max보다 크면
+				max = num[n]; // 그 원소는 최댓값이다.
+				idx = n + 1; // (n + 1)번째 원소를 인덱스값에 저장
+
+			}
+
+		}
+		// 출력
+		System.out.println(max); // max값 출력
+		System.out.println(idx); // idx값 출력
+
+	}
+
+}
