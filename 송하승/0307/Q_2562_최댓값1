@@ -19,10 +19,10 @@ public class Q_2562_최댓값1 {
 
 			int num = Integer.parseInt(st.nextToken()); // 숫자 입력 받기
 
-			// max값 알고리즘
+			// max값 알고리즘, 인덱스값 알고리즘
 			if (max < num) { // 어떤 숫자가 max보다 크면
 				max = num; // 그 숫자는 최댓값이다.
-				idx = n; // n번째 숫자는 인덱스값이다.
+				idx = n; // n번째 숫자를 인덱스값에 저장
 
 			}
 
