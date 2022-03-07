@@ -1,0 +1,36 @@
+package Bakjoon_step_by_step;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class Q_2562_최댓값1 {
+	static final int N = 9; // 정적 변수 선언 : N = 9
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); // 입출력 함수 선언
+
+		int max = Integer.MIN_VALUE; // max값 초기화
+		int idx = -1; // 인덱스값 초기화
+
+		for (int n = 1; n <= N; n++) { // N개의 숫자만큼
+			StringTokenizer st = new StringTokenizer(br.readLine()); // 입력받은 문자열을 공백 포함 분리
+
+			int num = Integer.parseInt(st.nextToken()); // 숫자 입력 받기
+
+			// max값 알고리즘
+			if (max < num) { // 어떤 숫자가 max보다 크면
+				max = num; // 그 숫자는 최댓값이다.
+				idx = n; // n번째 숫자는 인덱스값이다.
+
+			}
+
+		}
+		// 출력
+		System.out.println(max); // max값 출력
+		System.out.println(idx); // idx값 출력
+
+	}
+
+}
