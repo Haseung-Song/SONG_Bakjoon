@@ -1,0 +1,44 @@
+package Bakjoon_step_by_step;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class Q_10818_최소_최대3 {
+	static int[] num; // 1차원 배열 정적 선언
+
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); // 입출력 함수 선언
+
+		int N = Integer.parseInt(br.readLine()); // 정수의 개수
+
+		int min = Integer.MAX_VALUE; // min값 초기화
+		int max = Integer.MIN_VALUE; // max값 초기화
+
+		StringTokenizer st = new StringTokenizer(br.readLine()); // 입력받은 문자열을 공백 포함 분리
+
+		num = new int[N]; // 1차원 배열 초기화(원소의 개수 : N개)
+
+		for (int n = 0; n < num.length; n++) { // 원소의 개수만큼
+			num[n] = Integer.parseInt(st.nextToken()); // 원소 입력 받기
+
+			// min값 알고리즘
+			if (min > num[n]) { // 어떤 원소가 min보다 작으면
+				min = num[n]; // 그 원소는 최솟값이다.
+
+			}
+
+			// max값 알고리즘
+			if (max < num[n]) { // 어떤 원소가 max보다 크면
+				max = num[n]; // 그 원소는 최댓값이다.
+
+			}
+
+		}
+		// 출력
+		System.out.println(min + " " + max);
+
+	}
+
+}
