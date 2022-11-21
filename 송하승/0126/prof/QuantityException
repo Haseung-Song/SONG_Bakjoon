@@ -1,0 +1,7 @@
+package day_0126_prof2;
+
+public class QuantityException extends Exception{
+	public QuantityException() {
+		super("해당 책의 재고가 부족합니다.");
+	}
+}
