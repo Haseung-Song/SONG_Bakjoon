@@ -1,0 +1,104 @@
+package com.ssafy.ws07.step3;
+
+public class BookTest {
+
+	public static void main(String[] args) throws QuantityException {
+
+		// 도서 리스트를 싱글턴 패턴으로 유지하고 관리하는 service 객체를 생성한다.
+		BookManagerImpl service = BookManagerImpl.getInstance(); // 싱글턴 패턴(인스턴스 객체 생성)
+
+		// ArrayList 객체를 이용하여 도서, 잡지 정보를 추가한다.
+		service.add(new Book("21424", "Java Pro ", "김하나", "jaen.kr", 15000, "Java 기본 문법", 10));
+		service.add(new Book("21425", "Java Pro2", "김하나", "jaen.kr", 25000, "Java 응용", 20));
+		service.add(new Book("35355", "분석설계       ", "소나무", "jaen.kr", 30000, "SW 모델링", 30));
+		service.add(new Magazine("45678", "월간 알고리즘", "홍길동", "jaen.kr", 10000, "1월 알고리즘", 40, 2021, 1));
+
+		System.out.println("**********************도서 전체 목록***************************************************");
+		for (Book b : service.getList()) {
+			System.out.println(b);
+
+		}
+		System.out.println();
+
+		System.out.println("**********************일반 도서 목록*************************************");
+		for (Book b : service.getBooks()) {
+			System.out.println(b);
+
+		}
+		System.out.println();
+
+		System.out.println("**********************잡지 도서 목록***************************************************");
+		for (Magazine b : service.getMagazines()) {
+			System.out.println(b);
+
+		}
+		System.out.println();
+
+		System.out.println("**********************도서 번호 검색***************************************************");
+
+		for (Book b : service.searchByIsbn("45678")) {
+			System.out.println(b);
+
+		}
+
+		System.out.println();
+
+		System.out.println("**********************도서 제목 검색*************************************");
+		for (Book b : service.searchByTitle("Java")) {
+			System.out.println(b);
+
+		}
+		System.out.println();
+
+		System.out.println("**********************도서 판매*************************************");
+		try {
+			service.sell("21424", 9); // "21424"번 도서, 수량 09개 판매, 남은 수량 1개
+			System.out.println("판매완료");
+
+		} catch (QuantityException e) {
+			System.out.println("수량이 부족합니다.");
+//			e.printStackTrace();
+
+		}
+
+		for (Book b : service.getList()) {
+			System.out.println(b);
+
+		}
+		System.out.println();
+
+		System.out.println("**********************도서 구매*************************************");
+		service.buy("21424", 10); // "21424"번 도서, 수량 10개 구매, 남은 수량 11개
+
+		for (Book b : service.getList()) {
+			System.out.println(b);
+
+		}
+		System.out.println();
+
+		System.out.println("**********************도서 판매*************************************");
+		try {
+			service.sell("21424", 11); // "21424"번 도서, 수량 11개 판매, 남은 수량 0개
+			System.out.println("판매완료");
+
+		} catch (QuantityException e) {
+			System.out.println("수량이 부족합니다.");
+//			e.printStackTrace();
+
+		}
+
+		for (Book b : service.getList()) {
+			System.out.println(b);
+
+		}
+		System.out.println();
+
+		System.out.println("도서 가격 총합 : " + service.getTotalPrice() + "원");
+
+		System.out.println();
+
+		System.out.print("도서 가격 평균 : " + Math.round(service.getPriceAvg()) + "원");
+
+	}
+
+}
