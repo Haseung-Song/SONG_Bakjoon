@@ -1,0 +1,22 @@
+package day1031;
+
+import java.util.Scanner;
+
+public class 백준_나머지 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); // Scanner 클래스 객체 생성
+
+		int A = sc.nextInt(); // int형 정수 A 입력
+		int B = sc.nextInt(); // int형 정수 B 입력
+		int C = sc.nextInt(); // int형 정수 C 입력
+
+		// 첫째 줄 값 = 둘째 줄 값, 셋째 줄 값 = 넷째 줄 값
+		System.out.println((A + B) % C); // 첫째 줄 출력
+		System.out.println(((A % C) + (B % C)) % C); // 둘째 줄 출력
+		System.out.println((A * B) % C); // 셋째 줄 출력
+		System.out.println(((A % C) * (B % C)) % C); // 넷째 줄 출력
+
+	}
+
+}
