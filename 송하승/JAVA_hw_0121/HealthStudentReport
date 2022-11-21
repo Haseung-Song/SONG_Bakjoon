@@ -1,0 +1,99 @@
+package com.ssafy.hw02;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
+public class HealthStudentReport {
+	HealthStudent hs[];
+
+	public void printSum(String name) {
+		double weightSum = 0;
+		double heightSum = 0;
+		double cnt = 0;
+		DecimalFormat df = new DecimalFormat("0.000");
+		for (int i = 0; i < hs.length; i++) {
+			if (hs[i].getName().contentEquals(name)) {
+				weightSum += hs[i].getWeight();
+				heightSum += hs[i].getHeight();
+				cnt++;
+			}
+		}
+		System.out
+				.println("평균 몸무게ㅣ: " + df.format(weightSum / cnt) + "kg, 평균 키 : " + df.format(heightSum / cnt) + "cm");
+
+	}
+
+	public void printData() {
+		for (int i = 0; i < hs.length; i++) {
+			System.out.println(hs[i].getName() + "\t" + hs[i].getMeasuredate() + '\t' + hs[i].getWeight() + '\t'
+					+ hs[i].getHeight());
+		}
+
+	}
+
+	public void printHead() {
+		System.out.println("이름\t측정일\t\t몸무게\t키\t");
+
+	}
+
+	public void setData() {
+		try {
+			// 같은 패키지에 있는 input.txt 경로 설정
+			String path = HealthStudentReport.class.getResource("").getPath() + "input.txt";
+
+			// input.txt 파일 입력받음.
+			System.setIn(new FileInputStream(path));
+
+			// 입력 스트림으로 BufferedReader 객체 생성
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+			String line = ""; // 파일 라인 정보 저장 변수
+
+			File file = new File(path);
+			FileInputStream fis = new FileInputStream(file);
+			byte[] byteArray = new byte[(int) file.length()];
+			fis.read(byteArray);
+			String data = new String(byteArray);
+			String[] stringArray = data.split("\r\n");
+
+			// 라인 수 만큼 객체 배열 생성
+			hs = new HealthStudent[stringArray.length];
+
+			// 파일 전체 라인을 읽어옴.
+			int i = 0;
+			while ((line = br.readLine()) != null) {
+				String[] info = line.split(",");
+				hs[i++] = new HealthStudent(info[0].trim(), info[1].trim(), Double.parseDouble(info[2].trim()),
+						Double.parseDouble(info[3].trim()));
+
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+
+		}
+
+	}
+
+	public static void main(String[] args) throws Exception {
+
+		Scanner sc = new Scanner(System.in); // 입력함수 설정
+
+		HealthStudentReport hsr = new HealthStudentReport(); // 객체 생성
+
+		hsr.setData(); // 데이터 설정
+		hsr.printHead(); // 해당부분 출력
+		hsr.printData(); // 데이터 출력
+
+		System.out.println("학원생 이름을 입력하세요. >>");
+
+		String name = sc.next();
+		hsr.printSum(name); // 학원생 평균 몸무게와 키 값 출력
+		sc.close();
+
+	}
+
+}
