@@ -1,0 +1,47 @@
+package IM_TEST;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		int N = sc.nextInt();
+
+		int cnt = 0; // 카운트 초기화
+
+		int[][] map = new int[100][100]; // 모든 초기값 = 0
+
+		// 입력
+		for (int n = 0; n < N; n++) {
+			int x = sc.nextInt();
+			int y = sc.nextInt();
+
+			// 10 size 정사각형 처리 덮기
+			for (int i = x; i < x + 10; i++) {
+				for (int j = y; j < y + 10; j++) {
+					map[i][j] = 1; // (i, j) 좌표의 넓이가 1이다.
+					
+					// 번외) Q. 많이 겹쳐진 색종이 면적을 구하라.
+//					 map[i][j] += 1; // 겹쳐진 색종이만큼 숫자 증가
+
+				}
+			}
+		}
+
+		// 처리 : 색종이 판단 갯수 세기
+		for (int i = 0; i < map.length; i++) {
+			for (int j = 0; j < map[i].length; j++) {
+				if (map[i][j] == 1) { // 색종이가 덮여있으면
+					cnt++; // 카운트 증가
+
+				}
+			}
+		}
+		// 출력
+		System.out.println(cnt);
+
+	}
+
+}
