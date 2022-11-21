@@ -1,0 +1,35 @@
+package day1110;
+
+import java.util.Scanner;
+
+public class 백준_영수증 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); // Scanner 클래스 객체 생성
+
+		int X = sc.nextInt(); // 영수증에 적힌 총 금액 X
+
+		int N = sc.nextInt(); // 영수증에 적힌 구매한 물건의 종류의 수 N
+
+		int sum = 0; // sum 초기화
+
+		for (int i = 0; i < N; i++) { // N만큼 반복!!!
+			int a = sc.nextInt(); // 각 물건의 가격 a개
+			int b = sc.nextInt(); // 각 물건의 개수 b개
+
+			sum += (a * b); // 구매한 물건의 가격과 개수로 계산한 총 금액 sum
+
+		}
+
+		// 만약, 영수증에 적힌 총 금액 X = 구매한 물건의 가격과 개수로 계산한 총 금액 sum이면
+		if (X == sum) {
+			System.out.println("Yes"); // Yes 출력
+
+		} else { // 그렇지 않으면
+			System.out.println("No"); // No 출력
+
+		}
+
+	}
+
+}
