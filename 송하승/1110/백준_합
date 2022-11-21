@@ -1,0 +1,33 @@
+package day1110;
+
+import java.util.Scanner;
+
+public class 백준_합 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); // Scanner 클래스 객체 생성
+
+		int n = sc.nextInt(); // int형 정수 n 입력
+
+		int sum = 0; // sum 초기화
+
+		// 방법 1 : for 구문 활용!!!
+		for (int i = 1; i <= n; i++) { // i를 1부터 n까지 1씩 증가시킴.
+			sum += i; // 1부터 n까지의 합
+
+		}
+
+		// 방법 2 : while 구문 활용!!!
+//		int i = 1; // i 초기화
+//
+//		while (i <= n) { // i <= n까지
+//			sum += i; // 1부터 n까지의 합
+//			i++; // i를 1씩 증가시킴.
+//
+//		}
+
+		System.out.println(sum); // 합 출력
+
+	}
+
+}
