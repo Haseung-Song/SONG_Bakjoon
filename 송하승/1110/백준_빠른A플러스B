@@ -1,0 +1,44 @@
+package day1110;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
+
+public class 백준_빠른A플러스B {
+
+	public static void main(String[] args) throws IOException {
+		// BufferedReader 클래스 객체 생성
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		// BufferedWriter 클래스 객체 생성
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+		int T = Integer.parseInt(br.readLine()); // 반복할 테스트 횟수
+
+		for (int i = 0; i < T; i++) { // T만큼 반복!!!
+			// 방법 1 : split 메서드로 문자열을 나눌 수 있음. -> 각각을 배열로 배정함. Ex. "1" "2" ...
+			String str = br.readLine(); // 한 줄 통으로 입력받기!!!
+
+			String[] ab = str.split(" "); // " " (꼭 띄어쓰기!!!)
+
+			int A = Integer.parseInt(ab[0]); // String형 숫자 A를 int형으로 변환 (배열 첫 번째 값 A)
+			int B = Integer.parseInt(ab[1]); // String형 숫자 B를 int형으로 변환 (배열 두 번째 값 B)
+
+			// 방법 2 : StringTokenizer : String(문자열)을 토큰으로 Split할 수 있음. -> 배열을 쓸 필요가 없음.
+			// StringTokenizer 클래스 객체 생성
+//			StringTokenizer st = new StringTokenizer(br.readLine());
+//
+//			int A = Integer.parseInt(st.nextToken()); // String형 숫자 A를 int형으로 변환 (A 토큰)
+//			int B = Integer.parseInt(st.nextToken()); // String형 숫자 B를 int형으로 변환 (B 토큰)
+//
+			bw.write(A + B + "\n"); // (A + B + 개행) 출력 (버퍼에 있는 값 전부 출력)
+
+		}
+
+		bw.flush(); // 남아있는 데이터를 모두 출력시킴. (한 번만 사용함!!!)
+
+	}
+
+}
