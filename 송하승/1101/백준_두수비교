@@ -1,0 +1,26 @@
+package day1101;
+
+import java.util.Scanner;
+
+public class 백준_두수비교 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); // Scanner 클래스 객체 생성
+
+		int A = sc.nextInt(); // int형 정수 A 입력
+		int B = sc.nextInt(); // int형 정수 B 입력
+
+		if (A > B) { // A가 B보다 큰 경우 ">" 출력
+			System.out.println(">");
+
+		} else if (A < B) { // A가 B보다 작은 경우 "<" 출력
+			System.out.println("<");
+
+		} else { // A와 B가 같은 경우 "==" 출력
+			System.out.println("==");
+
+		}
+
+	}
+
+}
