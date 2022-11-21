@@ -1,0 +1,31 @@
+package day1110;
+
+import java.util.Scanner;
+
+public class 백준_별_찍기_3 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); // Scanner 클래스 객체 생성
+
+		int N = sc.nextInt(); // 별을 출력하는 줄의 개수 N
+
+		// 3. 피라미드형 별 찍기
+		for (int i = 1; i <= N; i++) { // 바깥 반복문 : 행을 나타냄. 1부터 N까지 행이 증가함.
+			for (int j = N - 1; j >= i; j--) { // 안쪽 반복문 1 : 열을 나타냄. (N - 1)부터 i까지 공백이 감소함.
+				System.out.print(" "); // 공백 출력
+
+			}
+
+			// 안쪽 반복문 2 : 열을 나타냄. 1부터 (2 * i) - 1까지 별이 증가함.
+			for (int k = 1; k <= (2 * i) - 1; k++) {
+				System.out.print("*"); // * 출력
+
+			}
+
+			System.out.println(); // 행 띄어쓰기
+
+		}
+
+	}
+
+}
