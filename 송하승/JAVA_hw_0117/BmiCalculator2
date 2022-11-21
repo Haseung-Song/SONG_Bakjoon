@@ -1,0 +1,57 @@
+package com.ssafy.hw02;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.StringTokenizer;
+
+public class BmiCalculator2 {
+
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(
+				new FileReader("C:\\SSAFY\\workspace\\startcamp\\JAVA_Homework_0117\\input.txt"));
+
+		String str = null; // 참조 자료형
+
+		while ((str = br.readLine()) != null) {
+//			System.out.println("읽어들인 문자열 한 줄 : " + str);
+
+			StringTokenizer st = new StringTokenizer(str, ", ");
+
+			int age = Integer.parseInt(st.nextToken());
+			double weight = Double.parseDouble(st.nextToken());
+			double height = Double.parseDouble(st.nextToken());
+
+			double BMI = weight / ((height * height) / 10000);
+
+			if (age >= 2) {
+				if (BMI > 30) {
+					System.out.printf("BMI 지수는 %f로 <고도비만>입니다.\n", BMI);
+
+				} else if (BMI > 25 && BMI <= 30) {
+					System.out.printf("BMI 지수는 %f로 <비만>입니다.\n", BMI);
+
+				} else if (BMI > 23 && BMI <= 25) {
+					System.out.printf("BMI 지수는 %f로 <과체중>입니다.\n", BMI);
+
+				} else if (BMI > 18.5 && BMI <= 23) {
+					System.out.printf("BMI 지수는 %f로 <정상>입니다.\n", BMI);
+
+				} else {
+					System.out.printf("BMI 지수는 %f로 <저체중>입니다.\n", BMI);
+
+				}
+
+			} else if (age >= 0 && age < 2) {
+				System.out.println("2세 미만입니다. BMI 지수를 구할 수 없습니다.");
+
+			} else {
+				System.out.println("나잇값이 음수입니다. 다시 입력하십시오.");
+
+			}
+
+		}
+		br.close();
+
+	}
+
+}
