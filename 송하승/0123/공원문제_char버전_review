@@ -1,0 +1,113 @@
+package test_Prepare;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class 공원문제_char버전_review {
+
+	public static void main(String[] args) throws NumberFormatException, IOException {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); // 입출력 함수
+
+		int TC = Integer.parseInt(br.readLine()); // 진행할 테스트 횟수
+
+		for (int tc = 1; tc <= TC; tc++) {
+			int size = Integer.parseInt(br.readLine()); // 지도의 가로/세로 크기
+			char[][] map = new char[size][size]; // 2차 string 배열로 입력받기
+
+			for (int i = 0; i < size; i++) { // 행의 수 만큼 입력
+				String line = br.readLine(); // 한 줄 통으로 입력 받았으면
+				StringTokenizer st = new StringTokenizer(line); // 끊어 준 다음에
+
+				for (int j = 0; j < size; j++) { // 열의 수 만큼 입력
+					map[i][j] = st.nextToken().charAt(0); // 만들어진 2차원 배열에서 char 추출하기! "G" -> 'G'
+
+				}
+			}
+
+			// 제대로 입력되었는지 확인하기(확인 후 이 부분은 주석 처리)
+			for (int i = 0; i < size; i++) {
+				for (int j = 0; j < size; j++) {
+					System.out.print(map[i][j]);
+
+				}
+				System.out.println();
+
+			}
+			System.out.println("-----------------");
+			/////////////////////////////////////////////////////////
+			/////////////// 빌딩 높이 계산을 위한 작업 ///////////////////////
+
+			int ans = 0; // 결과 값 초기화
+
+			for (int i = 0; i < size; i++) {
+				for (int j = 0; j < size; j++) {
+					boolean isPark = false; // 공원이 없으면 false, 있으면 true로 설정
+
+					if (map[i][j] == 'B') { // 현재 좌표 : 'B'일 때,
+						int height = 2; // 현재 높이 = 2;
+
+						// 현재 기준 내 위 칸
+						if (i - 1 >= 0 && map[i - 1][j] == 'G') {
+							isPark = true;
+
+							// 현재 기준 내 아래 칸
+						} else if (i + 1 < size && map[i + 1][j] == 'G') {
+							isPark = true;
+
+							// 현재 기준 내 오른쪽 칸
+						} else if (j + 1 < size && map[i][j + 1] == 'G') {
+							isPark = true;
+
+							// 현재 기준 내 왼쪽 칸
+						} else if (j - 1 >= 0 && map[i][j - 1] == 'G') {
+							isPark = true;
+
+							// 현재 기준 내 위/왼쪽 칸
+						} else if (i - 1 >= 0 && j - 1 >= 0 && map[i - 1][j - 1] == 'G') {
+							isPark = true;
+
+							// 현재 기준 내 위/오른쪽 칸
+						} else if (i - 1 >= 0 && j + 1 < size && map[i - 1][j + 1] == 'G') {
+							isPark = true;
+
+							// 현재 기준 내 아래/왼쪽 칸
+						} else if (i + 1 < size && j - 1 >= 0 && map[i + 1][j - 1] == 'G') {
+							isPark = true;
+
+							// 현재 기준 내 아래/오른쪽 칸
+						} else if (i + 1 < size && j + 1 < size && map[i + 1][j + 1] == 'G') {
+							isPark = true;
+
+						}
+
+						if (isPark == false) { // 만약 공원이 없다면?
+							height = 0; // 높이 초기화
+							for (int k = 0; k < size; k++) {
+								if (map[i][k] == 'B') { // if 가로행 = 'B',
+									height++; // 높이 증가
+								}
+								if (map[k][j] == 'B') { // if 세로행 = 'B',
+									height++; // 높이 증가
+								}
+
+							}
+							height--; // 가운데 중복 'B' 제거
+
+						}
+						ans = Math.max(ans, height); // 결과 값 = height 최고 값
+
+					}
+
+				}
+
+			}
+			System.out.print("#" + tc + " " + ans); // 결과 값 출력
+
+		} // end for TC
+
+	} // end for Main
+
+} // end for Class
