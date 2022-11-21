@@ -1,0 +1,43 @@
+package day0119;
+
+public class Test01 {
+
+	public static void main(String[] args) {
+		String s1 = new String("apple");
+		String s2 = new String("apple");
+		///////////////////////////////////////////////////////////////////////////////////////
+		char ch = s1.charAt(2); // char 하나를 분리하는 작업 메서드 (a p (p) l e)
+
+		System.out.println(s1.indexOf('l')); // 몇 번째 인덱스에 있는 char인지를 확인할 수 있음.
+		System.out.println(s1.indexOf("ple")); // 몇 번째부터 시작하는 String인지를 확인할 수 있음.
+		System.out.println(s1.substring(2, 4)); // 2번째부터 4-1(3)번째까지의 subString을 추출할 수 있음.
+
+		String str = s1.replace('a', 't');
+		// 문자를 대체해주는 기능
+		System.out.println(str + s1); // 'a' -> 't' = "tpple" + "apple" = "tppleapple"
+		System.out.println(s1.toUpperCase()); // 대문자로 변환
+		System.out.println(s1.toLowerCase()); // 소문자로 변환
+
+		char[] carr = s1.toCharArray();
+
+		System.out.println(carr[3]); // 3번째 문자를 추출
+		///////////////////////////////////////////////////////////////////////////////////////
+		System.out.println(s1 == s2); // s1 String과 s2 String이 같은가? true or false로 나옴.
+
+		boolean eq = true;
+		// 문자열 2개가 동일한지를 비교하려면?
+		for (int i = 0; (i < s1.length() && i < s2.length()); i++) {
+			if (s1.charAt(i) != s2.charAt(i)) {
+				eq = false;
+				break;
+			}
+		}
+
+//		if(s1.length() != s2.length()) {
+//			eq = false;
+//			
+//		}
+
+	}
+
+}
