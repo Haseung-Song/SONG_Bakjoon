@@ -1,0 +1,40 @@
+package day1114;
+
+import java.util.Scanner;
+
+public class 백준_더하기_사이클 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); // Scanner 클래스 객체 생성
+
+		int N = sc.nextInt(); // 주어진 정수 N 입력받기!!!
+
+		int M = N; // 입력받은 정수 N을 정수 M에 대입(중요함)
+
+		int count = 0; // 카운트 초기화
+
+		while (true) { // 무한 반복문
+			int A = (N / 10) + (N % 10); // 정수 A = N의 십의 자리수 + N의 일의 자리수
+			int B = (N % 10) * 10; // 정수 B = (N의 십의 자리수) * 10
+
+			if (A >= 10) { // 정수 A가 10 이상인 경우
+				A = (A % 10); // 정수 A = 정수 A의 일의 자리수
+
+			}
+
+			N = A + B; // 정수 N = 정수 A + 정수 B = 새로운 수 N
+
+			count++; // 카운트 증가
+
+			if (M == N) { // 새로운 수 N이 정수 M과 같으면
+				break; // 반복문을 빠져나간다.
+
+			}
+
+		}
+
+		System.out.println(count); // 카운트 출력(= 사이클의 길이)
+
+	}
+
+}
