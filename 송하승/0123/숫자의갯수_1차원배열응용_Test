@@ -1,0 +1,36 @@
+package test_Prepare;
+
+import java.util.Scanner;
+
+public class 숫자의갯수_1차원배열응용_Test {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); // 스캐너 입출력 함수 생성
+
+		int A = sc.nextInt(); // 다음 입력할 정수를 변수 A에 저장
+		int B = sc.nextInt(); // 다음 입력할 정수를 변수 B에 저장
+		int C = sc.nextInt(); // 다음 입력할 정수를 변수 C에 저장
+
+		int result = A * B * C; // 결과 값 = A * B * C -> 10자리 수 이하
+
+		String res = result + ""; // 결과 값 + "" = 문자열 res로 변환
+
+		int[] count = new int[10]; // 정수 배열 생성 및 초기화!
+
+		for (int i = 0; i < res.length(); i++) { // 문자열 res(결과 값 자릿수)의 길이만큼 반복문을 돌려서,
+			char ch = res.charAt(i); // 추출한 문자열 하나를 문자로 변환 후 저장 -> "123123123" -> '1'
+			int idx = ch - '0'; // 정수 인덱스 = '1' - '0' == 1 // 즉, idx = 0부터 9 사이의 값
+			count[idx]++; // 인덱스 카운트 증가
+
+		}
+
+		for (int i = 0; i < 10; i++) { // 총 10번 반복문을 돌려서,
+			System.out.println(count[i]); // 카운트[i]를 출력한다.
+
+		}
+
+		sc.close();
+
+	}
+
+}
