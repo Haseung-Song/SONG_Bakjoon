@@ -1,0 +1,76 @@
+package day0119;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class 실습2_2공원_char버전 {
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		int TC = Integer.parseInt(br.readLine()); // 여기서 빨간줄 가면 마우스 올려서 add throws declaration 클릭
+		for (int tc = 1; tc <= TC; tc++) {
+			int size = Integer.parseInt(br.readLine()); // 지도의 가로세로 크기
+			char[][] map = new char[size][size]; // 2차 String 배열로 입력받기.
+
+			for (int i = 0; i < size; i++) { // 행의 수만큼 입력
+				String line = br.readLine(); // 한줄 통으로 입력 받았으면
+				StringTokenizer st = new StringTokenizer(line); // 끊어주는 애한테 넘긴다음에
+				for (int j = 0; j < size; j++) {
+					map[i][j] = st.nextToken().charAt(0); // 끊어서 만들어진 String에서 char 발췌해내기 "G"->'G'
+				}
+			}
+			// 제대로 입력되었는지 확인하기(확인하고 이부분은 주석처리하기)
+//			for (int i = 0; i < size; i++) {
+//				for (int j = 0; j < size; j++) {
+//					System.out.print(map[i][j]);
+//				}
+//				System.out.println();
+//			}
+//			System.out.println("-----------------");
+			///////////////////////////////////////////////////////////
+			// 자 이제 빌딩높이 계산을 위한 작업을 해보세요.
+			int ans = 0;
+
+			for(int i=0; i<size; i++) {
+				for(int j=0; j<size; j++) {
+					if(map[i][j]=='B') { // i,j 칸에 B라고 적혀있는 애만 관심있음.
+						int now = 2;
+						boolean isPark = false;
+						if(i-1>=0 && map[i-1][j]=='G') // 상
+							isPark = true;
+						else if(i-1>=0 && j+1<size && map[i-1][j+1]=='G') // 우상
+							isPark = true;
+						else if(j+1<size && map[i][j+1]=='G') // 우
+							isPark = true;
+						else if(i+1<size && j+1<size && map[i+1][j+1]=='G') // 우하
+							isPark = true;
+						else if(i+1<size && map[i+1][j]=='G') // 하
+							isPark = true;
+						else if(j-1>=0 && i+1<size && map[i+1][j-1]=='G') // 좌하
+							isPark = true;
+						else if(j-1>=0 && map[i][j-1]=='G') // 좌
+							isPark = true;
+						else if(i-1>=0 && j-1>=0 && map[i-1][j-1]=='G')// 좌상
+							isPark = true;
+						
+						if(isPark == false) { // 와.. 주변에 공원 없나봄 ..
+							now=0;
+							for(int k=0; k<size; k++) {
+								if(map[i][k]=='B')
+									now++;
+								if(map[k][j]=='B')
+									now++;
+							}
+							now--; // 현재 중심칸 B가 두번 카운트됨.
+						}
+						ans = Math.max(ans, now);							
+					}
+				}
+			}
+			
+			System.out.println("#" + tc + " " + ans); // 현재 테스트 맵에서 가능한 최대 빌딩높이출력
+		} // end for TC
+	} // end main
+}// end class
