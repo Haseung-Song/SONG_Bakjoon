@@ -1,0 +1,84 @@
+package com.ssafy.hw02;
+
+public class HealthStudentReport {
+
+	public static void main(String[] args) {
+
+		String a, b, c, d;
+
+		a = "이름(name)";
+		b = "측정일(date)";
+		c = "몸무게(kg)";
+		d = "키(cm)";
+
+		System.out.printf("%s  %s      %s            %s  \n", a, c, b, d);
+
+		HealthData h_Data1 = new HealthData(); // 객체1 생성
+
+		h_Data1.name = "송하승";
+		h_Data1.date = "2021-01-01";
+		h_Data1.weight = 110.5;
+		h_Data1.height = 180.1;
+
+		HealthData h_Data2 = new HealthData(); // 객체2 생성
+
+		h_Data2.name = "전종운";
+		h_Data2.date = "2021-01-02";
+		h_Data2.weight = 76.1;
+		h_Data2.height = 171.5;
+
+		HealthData h_Data3 = new HealthData(); // 객체3 생성
+
+		h_Data3.name = "오세문";
+		h_Data3.date = "2021-01-03";
+		h_Data3.weight = 103.0;
+		h_Data3.height = 180.5;
+
+		HealthData h_Data4 = new HealthData(); // 객체4 생성
+
+		h_Data4.name = "안형근";
+		h_Data4.date = "2021-01-04";
+		h_Data4.weight = 69.5;
+		h_Data4.height = 171.3;
+
+		HealthData h_Data5 = new HealthData(); // 객체5 생성
+
+		h_Data5.name = "김주섭";
+		h_Data5.date = "2021-01-05";
+		h_Data5.weight = 105.2;
+		h_Data5.height = 179.7;
+
+		String[][] arr_nd = new String[2][5];
+
+		arr_nd = new String[][] { { h_Data1.name, h_Data1.date }, { h_Data2.name, h_Data2.date },
+				{ h_Data3.name, h_Data3.date }, { h_Data4.name, h_Data4.date }, { h_Data5.name, h_Data5.date }
+
+		};
+
+		double[][] arr_wh = new double[2][5];
+
+		arr_wh = new double[][] { { h_Data1.weight, h_Data1.height }, { h_Data2.weight, h_Data2.height },
+				{ h_Data3.weight, h_Data3.height }, { h_Data4.weight, h_Data4.height },
+				{ h_Data5.weight, h_Data5.height }
+
+		};
+
+		for (int i = 0; i < arr_nd.length; i++) {
+			for (int j = 0; j < arr_nd[i].length; j++) {
+				System.out.print("   " + arr_nd[i][j] + "             " + arr_wh[i][j] + "     ");
+
+			}
+			System.out.println();
+
+		}
+
+		for (int i = 0; i < arr_wh.length; i++) {
+			for (int j = 0; j < arr_wh[i].length; j++) {
+
+			}
+
+		}
+
+	}
+
+}
