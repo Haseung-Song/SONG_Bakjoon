@@ -1,0 +1,122 @@
+package day_0126_prof2;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+public class BookManagerImpl implements IBookManager {
+	private List<Book> books;
+
+//	private static final int MAX_SIZE=100; // List로 바꾸면서 사이즈 관련 값들이 불필요해짐.
+//	private int size=0;
+	private BookManagerImpl() {
+		books = new LinkedList<Book>();
+	}
+	private static BookManagerImpl instance = new BookManagerImpl();
+	public static BookManagerImpl getInstance() {
+		return instance;
+	}	
+///////////////////////////////////////////////////////////////////
+	@Override
+	public void add(Book book) {
+		books.add(book);
+	}
+
+	@Override
+	public void remove(String isbn) throws IsbnNotFoundException {
+		int size = books.size();
+		for (int i = 0; i < size; i++) {
+			if (books.get(i).getIsbn().equals(isbn)) { // 찾았다!
+				books.remove(i);
+				return;
+			}
+		}
+		throw new IsbnNotFoundException();
+	}
+
+	@Override
+	public List<Book> getList() {
+//		return books.toArray(); // 굳이 리스트를 배열로 바꿔야 하는 상황에서 쓸수있는 기능
+		return books;
+	}
+
+	@Override
+	public Book searchByIsbn(String isbn) throws IsbnNotFoundException {
+		int size = books.size();
+		for (int i = 0; i < size; i++) {
+			if (books.get(i).getIsbn().equals(isbn)) { // 찾았다!
+				return books.get(i);
+			}
+		}
+		throw new IsbnNotFoundException();
+	}
+
+	@Override
+	public List<Book> searchByTitle(String keyword) {
+		List<Book> tmp = new ArrayList<>();
+
+		int size = books.size();
+		for (int i = 0; i < size; i++) {
+			if (books.get(i).getTitle().contains(keyword)) { // 찾았다!
+				tmp.add(books.get(i));
+			}
+		}
+		return tmp;
+	}
+
+	@Override
+	public List<Magazine> getMagazines() {
+		List<Magazine> tmp = new ArrayList<>();
+
+		int size = books.size();
+		for (int i = 0; i < size; i++) {
+			if (books.get(i) instanceof Magazine) { // 찾았다!
+				tmp.add((Magazine)books.get(i));
+			}
+		}
+		return tmp;
+	}
+
+	@Override
+	public List<Book> getBooks() {
+		List<Book> tmp = new ArrayList<>();
+
+		int size = books.size();
+		for (int i = 0; i < size; i++) {
+			if (!(books.get(i) instanceof Magazine)) { // 찾았다!
+				tmp.add(books.get(i));
+			}
+		}
+		return tmp;
+	}
+
+	@Override
+	public int getTotalPrice() {
+		int sum = 0;
+		for(Book b: books)
+			sum += b.getPrice()*b.getQuantity();
+		return sum;
+	}
+
+	@Override
+	public double getPriceAvg() {
+		int count=0;
+		for(Book b: books)
+			count += b.getQuantity();
+		return (double)getTotalPrice()/count;
+	}
+
+	@Override
+	public void buy(String isbn, int count) throws IsbnNotFoundException {
+		Book book = searchByIsbn(isbn);
+		book.setQuantity(book.getQuantity()+count);		
+	}
+	
+	@Override
+	public void sell(String isbn, int count) throws IsbnNotFoundException, QuantityException {
+		Book book = searchByIsbn(isbn);
+		if(book.getQuantity() < count) // 판매 재고 부족
+			throw new QuantityException();
+		book.setQuantity(book.getQuantity()-count);
+	}
+}
