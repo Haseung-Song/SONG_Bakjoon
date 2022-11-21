@@ -1,0 +1,53 @@
+package IM_TEST;
+
+import java.util.Scanner;
+
+public class Solution3 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int count = 0;
+		boolean flag = false;
+		int result = 0;
+		int TC = sc.nextInt();
+		sc.nextLine();
+		String st;
+		char[] arr;
+
+		for (int test_case = 1; test_case <= TC; test_case++) {
+			flag = false;
+			count = 0;
+			result = 0;
+			st = sc.nextLine();
+			arr = st.toCharArray();
+
+			for (int i = 0; i < arr.length; i++) {
+				if (arr[i] == '(') {
+					count++;
+					flag = true;
+
+				}
+
+				else {
+					if (flag == true) {
+						result += count - 1;
+						count--;
+						flag = false;
+
+					} else {
+						result += 1;
+						count--;
+						flag = false;
+
+					}
+
+				}
+
+			}
+			System.out.printf("#%d %d\n", test_case, result);
+
+		}
+
+	}
+
+}
