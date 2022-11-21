@@ -1,0 +1,68 @@
+package com.ssafy.hw04;
+
+public class ArrayProcessBMI {
+
+	public static void main(String[] args) {
+		String a, b, c, d;
+
+		a = "idx";
+		b = "(만) 나이";
+		c = "몸무게(kg)";
+		d = "키(m)";
+
+		System.out.printf("%s      %s      %s    %s  \n", a, b, c, d);
+
+		String[] idx = { "학원생1", "학원생2", "학원생3", "학원생4", "학원생5", "평균임6" };
+
+		Array array1 = new Array();
+		array1.age = 21.0;
+		array1.weight = 53.2;
+		array1.height = 1.673;
+
+		Array array2 = new Array();
+		array2.age = 35.0;
+		array2.weight = 90.3;
+		array2.height = 1.781;
+
+		Array array3 = new Array();
+		array3.age = 28.0;
+		array3.weight = 70.7;
+		array3.height = 1.653;
+
+		Array array4 = new Array();
+		array4.age = 25.0;
+		array4.weight = 75.1;
+		array4.height = 1.811;
+
+		Array array5 = new Array();
+		array5.age = 31.0;
+		array5.weight = 62.0;
+		array5.height = 1.532;
+
+		Array array6 = new Array();
+		array6.avg1 = (array1.age + array2.age + array3.age + array4.age + array5.age) / 5;
+		array6.avg2 = Math.round(
+				(array1.weight + array2.weight + array3.weight + array4.weight + array5.weight) / 5 * 100) / 100.0;
+		array6.avg3 = Math.round(
+				(array1.height + array2.height + array3.height + array4.height + array5.height) / 5 * 100) / 100.0;
+
+		double[][] arr_double = new double[3][5];
+
+		arr_double = new double[][] { { array1.age, array1.weight, array1.height },
+				{ array2.age, array2.weight, array2.height }, { array3.age, array3.weight, array3.height },
+				{ array4.age, array4.weight, array4.height }, { array5.age, array5.weight, array5.height },
+				{ array6.avg1, array6.avg2, array6.avg3 } };
+
+		for (int i = 0; i < arr_double.length; i++) {
+			System.out.print(idx[i]);
+			for (int j = 0; j < arr_double[i].length; j++) {
+				System.out.print("      " + arr_double[i][j]);
+
+			}
+			System.out.println();
+
+		}
+
+	}
+
+}
