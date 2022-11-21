@@ -1,0 +1,9 @@
+package com.ssafy.hw08.step2;
+
+public class Main {
+	public static void main(String[] args) {
+		NaverFrame f = new NaverFrame();
+
+	}
+
+}
