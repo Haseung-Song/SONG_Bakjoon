@@ -1,0 +1,41 @@
+package day0119;
+
+public class Test03 {
+	public static void main(String[] args) {
+		Person01 p = new Person01("양유");
+		Person01 pp = new Person01("양유");
+		Person01 ppp = new Person01("하승", 29, "010-4289-7487");
+
+	}
+
+}
+
+class Person01 {
+	String name;
+	int age;
+	String phone;
+
+	Person01() {
+//		this.name = "noname";
+//		this.age = -1;
+//		this.phone = "010-9999-9999";
+		this("noname", -1, "010-4289-7487");
+
+	}
+
+	Person01(String name) {
+//		this.name = name; // 지역변수와 멤버변수를 구분하기 위해 this를 사용함.
+//		this.age = -1;
+//		this.phone = "010-9999-9999";
+		this(name, -1, "010-9999-9999");
+
+	}
+
+	Person01(String name, int age, String phone) {
+		this.name = name;
+		this.age = age;
+		this.phone = phone;
+
+	}
+
+}
