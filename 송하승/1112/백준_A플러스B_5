@@ -1,0 +1,25 @@
+package day1112;
+
+import java.util.Scanner;
+
+public class 백준_A플러스B_5 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); // Scanner 클래스 객체 생성
+
+		while (true) { // 무한 반복문
+			int A = sc.nextInt(); // int형 A 입력받기!!!
+			int B = sc.nextInt(); // int형 B 입력받기!!!
+
+			if (A == 0 && B == 0) { // 만약, 입력받은 A와 B값이 모두 0이면
+				break; // 반복문을 빠져나온다.
+
+			}
+
+			System.out.println(A + B); // A + B 출력
+
+		}
+
+	}
+
+}
