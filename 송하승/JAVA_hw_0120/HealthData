@@ -1,0 +1,9 @@
+package com.ssafy.hw02;
+
+public class HealthData {
+	String name;
+	String date;
+	double weight;
+	double height;
+
+}
