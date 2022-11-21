@@ -1,0 +1,19 @@
+package day0126_prof;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Test01 {
+	public static void main(String[] args) throws InterruptedException {
+		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt(); // 예외처리 하든말든 맘대로 해라. 비체크예외. 컴파일러 무심.
+
+//		try {
+			Thread.sleep(1000);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		} // 반드시 예외처리해 ! 아니면 나 번역 안한당 !! 컴파일러 깐깐.
+		
+		System.out.println("num = "+ num);
+	}
+}
