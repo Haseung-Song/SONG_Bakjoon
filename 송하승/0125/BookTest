@@ -1,0 +1,64 @@
+package com.ssafy.ws06.step3;
+
+import java.util.ArrayList;
+
+public class BookTest {
+
+	public static void main(String[] args) {
+
+		// ArrayList 객체 생성
+		ArrayList<Book> bs = new ArrayList<>();
+
+		// 도서 리스트를 싱글턴 패턴으로 유지하고 관리하는 service 객체를 생성한다.
+		BookManagerImpl service = BookManagerImpl.getInstance(); // 싱글턴 패턴(인스턴스 객체 생성)
+
+		// ArrayList 객체를 이용하여 도서, 잡지 정보를 추가한다.
+		service.add(new Book("21424", "Java Pro ", "김하나", "jaen.kr", 15000, "Java 기본 문법"));
+		service.add(new Book("21425", "Java Pro2", "김하나", "jaen.kr", 25000, "Java 응용"));
+		service.add(new Book("35355", "분석설계       ", "소나무", "jaen.kr", 30000, "SW 모델링"));
+		service.add(new Magazine("45678", "월간 알고리즘", "홍길동", "jaen.kr", 10000, "1월 알고리즘", 2021, 1));
+
+		System.out.println("**********************도서 전체 목록***************************************************");
+		for (Book b : service.getList()) {
+			System.out.println(b);
+
+		}
+		System.out.println();
+
+		System.out.println("**********************일반 도서 목록*************************************");
+		for (Book b : service.getBooks()) {
+			System.out.println(b);
+
+		}
+		System.out.println();
+
+		System.out.println("**********************잡지 도서 목록***************************************************");
+		for (Magazine b : service.getMagazines()) {
+			System.out.println(b);
+
+		}
+		System.out.println();
+
+		System.out.println("**********************도서 번호 검색***************************************************");
+		for (Book b : service.searchByIsbn("45678")) {
+			System.out.println(b);
+
+		}
+		System.out.println();
+
+		System.out.println("**********************도서 제목 검색*************************************");
+		for (Book b : service.searchByTitle("Java")) {
+			System.out.println(b);
+
+		}
+		System.out.println();
+
+		System.out.println("도서 가격 총합 : " + service.getTotalPrice() + "원");
+
+		System.out.println();
+
+		System.out.print("도서 가격 평균 : " + Math.round(service.getPriceAvg()) + "원");
+
+	}
+
+}
