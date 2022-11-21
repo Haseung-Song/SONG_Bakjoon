@@ -1,0 +1,24 @@
+package day1031;
+
+import java.util.Scanner;
+
+public class 백준_곱셈 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); // Scanner 클래스 객체 생성
+
+		int A = sc.nextInt(); // 세 자리 자연수 A 입력 (Ex. 472)
+		int B = sc.nextInt(); // 세 자리 자연수 B 입력 (Ex. 385)
+
+		int C = (B % 100) % 10; // C = (B를 100)으로 나눈 나머지(Ex. 85)를 10으로 나눈 나머지(Ex. 5)
+		int D = (B / 10) % 10; // D = (B를 10)으로 나눈 몫(Ex. 38)을 10으로 나눈 나머지(Ex. 8)
+		int E = (B / 100); // E = (B를 100)으로 나눈 몫(Ex. 3)
+
+		System.out.println(A * C); // Ex. 2360
+		System.out.println(A * D); // Ex. 3776
+		System.out.println(A * E); // Ex. 1416
+		System.out.println(A * B); // Ex. 181720
+
+	}
+
+}
