@@ -1,0 +1,53 @@
+package com.ssafy.ws01.step3;
+
+public class DigitTest2 {
+
+	public static void main(String[] args) {
+
+		int num[] = new int[17];
+		int result = 0;
+
+		// 3중 for문
+		for (int i = 0; i < 3; i++) { // 3줄 출력
+			for (int j = 0; j < i; j++) { // 숫자 출력을 위한 공백 생성
+				System.out.print("   "); // 3칸 공백
+
+			}
+			// 1행(숫자 5개), 2행(숫자 3개), 3행(숫자 1개)
+			// 각 행의 숫자의 개수를 출력
+			for (int k = 5; k >= i * 2 + 1; k--) { // 5, 3, 1
+				result += 1;
+				num[i] = result;
+				System.out.printf("%3d", num[i]); // 각 숫자의 간격(3칸 공백) 설정, 숫자 출력
+
+			}
+			System.out.println();
+
+		}
+
+		for (int i = 0; i < 2; i++) { // 두 줄(2줄) 숫자 출력
+			for (int j = 0; j < i; j++) { // 숫자 출력을 위한 공백 생성
+				System.out.print(""); // 1칸 공백
+
+			}
+			// 4행(숫자 3개), 5행(숫자 5개)
+			// 각 행의 숫자의 개수를 출력
+			for (int k = 3; k <= i * 2 + 5; k++) { // 3, 5
+				result += 1;
+				num[i] = result;
+				if (num[i] > 12) { // 12보다 큰 숫자는
+					System.out.printf(" %2d ", num[i]); // 각 숫자의 간격(2칸 공백) 설정, 숫자 출력
+
+				} else if (9 < num[i] && num[i] < 13) { // 숫자 10, 11, 12는
+					System.out.printf("%5d", num[i]); // 각 숫자의 간격(5칸 공백) 설정, 숫자 출력
+
+				}
+
+			}
+			System.out.println();
+
+		}
+
+	}
+
+}
