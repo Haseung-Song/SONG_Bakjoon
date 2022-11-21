@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class Solution {
+public class Solution1 {
 	static int n; // 정적 변수 int n 설정
 	static char[][] map; // 정적 변수 2차원 배열 char[][] map 설정
 
