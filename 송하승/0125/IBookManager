@@ -1,0 +1,26 @@
+package com.ssafy.ws06.step3;
+
+import java.util.List; // ArrayList, LinkedList 등 다양한 List 형태를 쓸 수 있으므로 List로 import 하는 것이 좋음.
+
+public interface IBookManager {
+	void add(Book book); // 1. 도서 추가 (ArrayList 객체 이용)
+
+	List<Book> getList(); // 2. 매니저가 현재 보유중인 모든 책 정보 반환
+
+	void remove(String isbn); // 3. 도서 삭제 (도서 번호 이용)
+
+	List<Book> getBooks(); // 4. 현재 보유 중인 도서 목록 중 일반 도서만 추려서 반환
+
+	List<Magazine> getMagazines(); // 5. 현재 보유 중인 도서 목록 중 잡지만 추려서 반환
+
+	List<Book> searchByIsbn(String isbn); // 6. 도서 번호 검색으로 반환
+
+	List<Book> searchByTitle(String title); // 7. 도서 제목 검색으로 반환
+
+	int getTotalPrice(); // 8. 도서 총합 가격 반환
+
+	double getPriceAvg(); // 9. 도서 평균 가격 반환
+
+}
+
+////////////////////////////////////////////////////////////////////////////////////
