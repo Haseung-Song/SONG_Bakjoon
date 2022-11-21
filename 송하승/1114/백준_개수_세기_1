@@ -1,0 +1,35 @@
+package day1114;
+
+import java.util.Scanner;
+
+public class 백준_개수_세기_1 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); // Scanner 클래스 객체 생성
+
+		int N = sc.nextInt(); // 진행할 테스트 횟수 N
+
+		int number[] = new int[N]; // 1차원 배열 생성 및 초기화(크기 : N)
+
+		int count = 0; // 카운트 초기화
+
+		for (int i = 0; i < N; i++) { // N만큼 반복!!!
+			number[i] = sc.nextInt(); // 배열 원소값 입력.
+
+		}
+
+		int v = sc.nextInt(); // 찾으려 하는 정수 v 입력받기!
+
+		for (int i = 0; i < N; i++) {
+			if (number[i] == v) { // 입력된 배열 원소 값이 찾으려고 하는 정수 v와 같으면
+				count++; // 카운트 증가
+
+			}
+
+		}
+
+		System.out.println(count); // 카운트 출력(= v의 개수)
+
+	}
+
+}
