@@ -1,0 +1,7 @@
+package day0126_prof;
+
+public class BookOverFlowException extends Exception {
+	public BookOverFlowException() {
+		super("책이 더이상 추가가 .. 안된답니다.. 따흑 .. ");
+	}
+}
