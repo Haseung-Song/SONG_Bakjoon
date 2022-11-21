@@ -1,0 +1,9 @@
+package news_Parser;
+
+public class Main {
+	public static void main(String[] args) {
+		NewsFrame f = new NewsFrame();
+		
+		
+	}
+}
