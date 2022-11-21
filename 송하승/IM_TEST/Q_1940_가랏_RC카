@@ -1,0 +1,49 @@
+package IM_TEST;
+
+import java.util.Scanner;
+
+public class Q_1940_가랏_RC카 {
+	static int speed, res;
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		int TC = sc.nextInt();
+
+		for (int tc = 1; tc <= TC; tc++) {
+			int val = 0;
+			speed = 0;
+			res = 0;
+
+			int N = sc.nextInt();
+
+			for (int i = 0; i < N; i++) {
+				int cmd = sc.nextInt();
+				switch (cmd) {
+				case 0: // 현상 유지
+					break;
+
+				case 1: // 가속
+					val = sc.nextInt();
+					speed += val;
+					break;
+
+				case 2: // 감속
+					val = sc.nextInt();
+					speed -= val;
+					if (speed < 0) {
+						speed = 0;
+					}
+					break;
+
+				}
+				res += speed;
+
+			}
+			System.out.println("#" + tc + " " + res);
+
+		}
+
+	}
+
+}
