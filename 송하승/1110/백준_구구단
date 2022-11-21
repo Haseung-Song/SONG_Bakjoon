@@ -1,0 +1,38 @@
+package day1110;
+
+import java.util.Scanner;
+
+public class 백준_구구단 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); // Scanner 클래스 객체 생성
+
+		int N = sc.nextInt(); // int형 정수 입력
+
+		// 방법 1 : for 구문 활용!!!
+		for (int i = 1; i <= 9; i++) { // 정수형 i를 1에서 9까지 증가시킴.
+			System.out.println(N + " * " + i + " = " + N * i); // 구구단 출력
+
+		}
+
+		// 방법 2 : while 구문 활용!!!
+//		int i = 1; // 정수형 i를 1로 초기화
+//
+//		while (i <= 9) {
+//			System.out.println(N + " * " + i + " = " + N * i); // 구구단 출력
+//			i++; // 정수형 i를 1에서 9까지 증가시킴.
+//
+//		}
+
+		// 방법 3 : do-while 구문 활용!!!
+//		int i = 1; // 정수형 i를 1로 초기화
+//		
+//		do {
+//			System.out.println(N + " * " + i + " = " + N * i); // 구구단 출력
+//			i++; // 정수형 i를 1에서 9까지 증가시킴.
+//
+//		} while (i <= 9);
+
+	}
+
+}
