@@ -1,0 +1,21 @@
+package day0119;
+
+public class Test02 {
+
+	public static void main(String[] args) {
+		String s3 = "apple"; // 생성자 new가 없음.
+		String s4 = "APPLE"; // 생성자 new가 없음.
+		String s5 = "apple"; // 생성자 new가 없음.
+
+		System.out.println(s3.toUpperCase());
+
+		// stack에 있는 s3와 s4가 모두 동일한 주소값을 같은 메모리에 받았음.
+		// "APPLE"의 주소값 = "apple"의 주소값이므로 아래 결과값이 true임.
+		System.out.println(s3 == s5); // XXXXXXX
+
+		System.out.println(s3.equals(s4)); // s3의 문자열 내용과 s4의 문자열 내용을 하나하나 비교해주는 String 클래스 기능
+		System.out.println(s3.equalsIgnoreCase(s4));
+
+	}
+
+}
