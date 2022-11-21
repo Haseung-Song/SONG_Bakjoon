@@ -1,0 +1,170 @@
+package com.ssafy.ws05.step3;
+
+public class BookManager {
+	private Book[] books;
+	private final int MAX_SIZE = 100;
+	private int size;
+
+	public BookManager() {
+		books = new Book[MAX_SIZE];
+
+	}
+
+	public void add(Book book) {
+		books[size] = book;
+		size++;
+
+	}
+
+	public Book[] getList() {
+		Book[] copy = new Book[size];
+		for (int i = 0; i < size; i++) {
+			copy[i] = books[i];
+
+		}
+		return copy;
+
+	}
+
+	// 풀이 1 (내 풀이)
+	public Book[] getBooks() {
+		int count = 0;
+		Book[] temp1 = new Book[size]; // 임시로 담을 배열 temp1 생성
+		for (int i = 0; i < size; i++) {
+			if (!(books[i] instanceof Magazine)) { // 잡지를 상속하지 않는 객체가 있으면(일반 도서 목록)
+				temp1[i] = books[i]; // temp1에 저장
+				count++; // 카운트 증가
+
+			}
+		}
+
+		Book[] temp2 = new Book[count]; // 반환할 배열 temp2 생성
+		int idx = 0; // 인덱스 초기화; (초기화 반드시 필수!!!)
+		for (int j = 0; j < size; j++) { // 반드시 size 만큼!!!
+			if (temp1[j] != null) {
+				temp2[idx++] = temp1[j]; // (일반 도서 목록) temp1을 (반환할 배열) temp2에 저장
+
+			}
+		}
+		return temp2; // temp2 반환
+
+	}
+
+	// 풀이 2 (교수님 풀이)
+//	public Book[] getBooks() {
+//		int count = 0;
+//		for (int i = 0; i < size; ++i) {
+//			if (!(books[i] instanceof Magazine))
+//				++count;
+//		}
+//
+//		Book[] result = new Book[count];
+//		int idx = 0;
+//		for (int i = 0; i < size; ++i) {
+//			if (!(books[i] instanceof Magazine)) {
+//				result[idx++] = books[i];
+//			}
+//		}
+//		return result;
+//	}
+
+	// 풀이 1 (내 풀이)
+	public Magazine[] getMagazines() {
+		int count = 0;
+		Magazine[] temp1 = new Magazine[size]; // 임시로 담을 배열 temp1 생성
+		for (int i = 0; i < size; i++) {
+			if (books[i] instanceof Magazine) { // 잡지를 참조하는 객체가 있으면 (잡지 목록)
+				temp1[i] = (Magazine) books[i]; // (잡지로 형 변환 후) temp1에 저장
+				count++;
+
+			}
+		}
+
+		Magazine[] temp2 = new Magazine[count]; // 반환할 배열 temp2 생성
+		int idx = 0; // 인덱스 초기화; (초기화 반드시 필수!!!)
+		for (int j = 0; j < size; j++) { // 반드시 size 만큼!!!
+			if (temp1[j] != null) {
+				temp2[idx++] = temp1[j]; // (잡지 목록) temp1을 (반환할 배열) temp2에 저장
+
+			}
+		}
+		return temp2; // temp2 반환
+
+	}
+
+	// 풀이 2 (교수님 풀이)
+//	public Magazine[] getMagazines() {
+//		int count = 0;
+//		for (int i = 0; i < size; ++i) { // 잡지 개수 카운트
+//			if (books[i] instanceof Magazine)
+//				++count;
+//		}
+
+//		Magazine[] result = new Magazine[count]; // 결과 카운트만큼 배열 생성
+//		int idx = 0;
+//		for (int i = 0; i < size; ++i) {
+//			if (books[i] instanceof Magazine) { // 잡지만 배열에 담기
+//				result[idx++] = (Magazine) books[i];
+//			}
+//		}
+//		return result;
+//	}
+
+	// 풀이 1 (내 풀이)
+	public Book[] searchByTitle(String title) {
+		int count = 0;
+		Book[] temp1 = new Book[size];
+		for (int i = 0; i < size; i++) {
+			if (books[i].getTitle().contains("Java")) {
+				temp1[i] = books[i];
+				count++;
+
+			}
+		}
+
+		Book[] temp2 = new Book[count];
+		int idx = 0;
+		for (int j = 0; j < size; j++) {
+			if (temp1[j] != null) {
+				temp2[idx++] = temp1[j];
+
+			}
+		}
+		return temp2;
+
+	}
+
+	// 풀이 2 (교수님 풀이)
+//	public Book[] searchByTitle(String title) {
+//		int count = 0; 
+//		for (int i = 0; i < size; ++i) {	// 도서 제목을 포함하는 도서의 개수 카운트
+//			if (books[i].getTitle().contains(title)) ++count;
+//		}
+//		Book[] result = new Book[count];	// 결과 카운트만큼 배열 생성
+//		int idx = 0;
+//		for (int i = 0; i < size; ++i) {
+//			if (books[i].getTitle().contains(title)) { // 도서 제목을 포함하는 도서만 배열에 담기
+//				result[idx++] = books[i];
+//			}
+//		}
+//		return result; 
+//	}
+
+	// 도서리스트의 가격의 총합을 반환
+	public int getTotalPrice() {
+		int total = 0;
+		for (int i = 0; i < size; i++) {
+			total += books[i].getPrice();
+
+		}
+		return total;
+
+	}
+
+	// 도서리스트의 가격의 평균을 반환
+	public double getPriceAvg() {
+		return (double) getTotalPrice() / size;
+
+	}
+
+}
