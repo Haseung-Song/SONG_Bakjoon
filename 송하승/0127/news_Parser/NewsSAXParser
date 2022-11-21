@@ -1,0 +1,68 @@
+package news_Parser;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
+
+public class NewsSAXParser {
+	private List<News> newsList = new ArrayList<News>();
+
+	public List<News> readNewsXML() {
+		newsList.clear(); // 새로고침 하는 경우 기존 뉴스 날려야됨.
+
+		try {
+			SAXParserFactory factory = SAXParserFactory.newInstance();
+			SAXParser parser = factory.newSAXParser();
+			parser.parse(new FileInputStream("C:\\SSAFY\\workspace\\startcamp\\day0127\\src\\ssw\\News.xml"), new NewsSAXHandler()); // 해당 파일내용 읽어서 핸들러한테 파싱시키기.
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return newsList;
+	}
+
+	class NewsSAXHandler extends DefaultHandler {
+		News news = null;
+		StringBuilder sb = new StringBuilder(); // xml 태그 사이에 있는 텍스트 이어붙이는 과정에서 메모리 효율
+
+		@Override
+		public void startElement(String uri, String localName, String qName, Attributes attributes)
+				throws SAXException {
+			if (qName.equals("item")) { // 오 뉴스 시작 태그다!!
+				news = new News();
+			}
+		}
+
+		@Override
+		public void endElement(String uri, String localName, String qName) throws SAXException {
+			if (news != null) { // 제목이랑 내용이랑 담을 뉴스객체 확실히 있는지 확인하고!
+				if (qName.equals("title")) {
+					news.setTitle(sb.toString().trim()); // 지금까지 이어붙인 characters 내용이 제목이었구나!
+				} else if (qName.equals("link")) {
+					news.setLink(sb.toString().trim());
+				} else if (qName.equals("description")) {
+					news.setDesc(sb.toString().trim());
+				} else if (qName.equals("item")) { // 오 방금 뉴스하나 끝났네 ?!
+					newsList.add(news); // 내용 채워진 뉴스객체 리스트에 담자!
+					news = null;
+				}
+				sb = new StringBuilder();
+			}
+		}
+
+		@Override
+		public void characters(char[] ch, int start, int length) throws SAXException {
+			sb.append(ch, start, length);
+		}
+	}
+}
