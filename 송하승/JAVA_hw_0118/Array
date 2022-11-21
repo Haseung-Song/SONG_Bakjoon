@@ -1,0 +1,9 @@
+package com.ssafy.hw04;
+
+public class Array {
+	double age;
+	double weight;
+	double height;
+	double avg1, avg2, avg3;
+
+}
