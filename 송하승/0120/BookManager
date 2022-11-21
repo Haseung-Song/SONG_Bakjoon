@@ -1,0 +1,55 @@
+package day0120;
+
+public class BookManager {
+	private Book[] books;
+	private final int MAX_SIZE = 100;
+	private int size = 0;
+
+	public BookManager() {
+		books = new Book[MAX_SIZE];
+
+	}
+
+	public void add(Book book) {
+		books[size] = book;
+		size++;
+
+	}
+
+	// 도서를 도서리스트에 추가
+	public Book[] getBooks() {
+		Book[] copy = new Book[size]; // 현재 책 갯수만큼 저장하는 배열
+		for (int i = 0; i < size; i++) {
+			copy[i] = books[i];
+
+		}
+		return copy;
+
+	}
+
+	// 도서를 도서리스트에서 검색
+	public Book searchByIsbn(String isbn) {
+		for (int i = 0; i < size; i++) {
+			if (books[i].getIsbn().equals(isbn)) { // 모든 책중 지금 검색하는 책이 있나 검사해서 찾았을 경우
+				return books[i]; // 해당 책을 리턴하면서 search 함수도 종료됨.
+
+			}
+		}
+		return null; // for문에서 책을 찾아서 return 못하면 찾는 책이 없었던거임.
+
+	}
+	//도서를 도서리스트에서 삭제
+
+	public void remove(String isbn) {
+		for (int i = 0; i < size; i++) {
+			if (books[i].getIsbn().equals(isbn)) { // 모든 책중 지금 검색하는 책이 있나 검사해서 찾았을 경우
+				books[i] = books[size - 1]; // 제일 마지막에 있는 책을 현재 삭제하려는 책 위치에 덮어씌워버리고
+				books[size - 1] = null; // 제일 마지막에 있던 책은 옮겨졌으니 삭제처리하고
+				size--; // 책이 하나 줄어듦.
+				break; // isbn이 일치하는 책을 찾아서 삭제했으므로 반복문 종료
+			}
+		}
+
+	}
+
+}
