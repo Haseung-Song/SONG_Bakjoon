@@ -1,0 +1,41 @@
+package bakjoon_Q;
+
+import java.util.Scanner;
+
+public class Q_2562 {
+
+	public static void main(String[] args) {
+		// 9개의 서로 다른 자연수가 주어진다.
+		// 총 9개의 입력이 필요하다.
+		// 출력
+		// 첫째 줄에 최댓값을 출력하고,
+		// 둘째 줄에 최댓값이 몇 번째 수인지를 출력한다.
+
+		Scanner sc = new Scanner(System.in); // 입출력 함수
+
+		int[] num = new int[9]; // 1차원 배열 선언 및 초기화
+
+		for (int n = 0; n < num.length; n++) {
+			num[n] = sc.nextInt(); // 9개의 수를 입력한다.
+
+		}
+		int max_Value = 0; // 최댓값 초기화
+
+		int index = 0; // 최댓값 위치 초기화
+
+		for (int n = 0; n < num.length; n++) { // num[0] to num[8]까지 반복문을 돌려서
+			if (max_Value < num[n]) { // 최댓값보다 큰 수가 있으면
+				max_Value = num[n]; // 그 수가 최댓값이다.
+				index = n + 1; // (n + 1)번째 위치를 index 값에 저장
+
+			}
+
+		}
+		// 최댓값 출력
+		System.out.println(max_Value);
+		// 최댓값 위치 출력
+		System.out.println(index);
+
+	}
+
+}
