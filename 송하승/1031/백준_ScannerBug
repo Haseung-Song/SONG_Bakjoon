@@ -1,0 +1,30 @@
+package day1031;
+
+import java.util.Scanner;
+
+public class 백준_ScannerBug {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in); // Scanner 클래스 객체 생성
+
+		int TC = sc.nextInt(); // 줄바꿈 문자(개행 문자) -> 엔터를 칠 때까지 기다렸다가 입력을 받음.
+
+		for (int tc = 1; tc <= TC; tc++) {
+			// 문자열을 계속 입력할 경우, 마지막 라인이 입력되지 않는 버그가 발생함.
+			// 문자열의 경우 꼭 BufferedReader를 쓰는 것이 중요함.
+			String line1 = sc.nextLine(); // String형 문자열 line1 입력 -> Ex. "123" "abc"
+			String line2 = sc.nextLine(); // String형 문자열 line2 입력
+			String line3 = sc.nextLine(); // String형 문자열 line3 입력
+			String line4 = sc.nextLine(); // String형 문자열 line4 입력
+
+			System.out.println(line1); // 문자열 line1 출력
+			System.out.println(line2); // 문자열 line2 출력
+			System.out.println(line3); // 문자열 line3 출력
+			System.out.println(line4); // 문자열 line4 출력 (마지막 line4 출력 X 오류 발생)
+
+		}
+
+	}
+
+}
