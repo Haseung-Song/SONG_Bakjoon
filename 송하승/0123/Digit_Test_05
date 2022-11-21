@@ -1,0 +1,27 @@
+package test_Prepare;
+
+public class Digit_Test_05 { // 정삼각형 - 피라미드
+
+	public static void main(String[] args) {
+		int num[] = new int[9];
+		int result = 0;
+
+		for (int i = 0; i < 3; i++) { // 3행 출력
+			for (int j = 0; j < 3 - i; j++) { // 숫자 출력을 위한 열 공백 생성
+				System.out.print("  "); // 2칸 공백
+
+			}
+
+			for (int k = 0; k < i * 2 + 1; k++) { // 1행부터 3행까지 숫자의 개수(1, 3, 5)
+				result += 1;
+				num[i] = result;
+				System.out.printf("%2d", num[i]); // 2칸 공백(각 숫자의 간격)
+
+			}
+			System.out.println();
+
+		}
+
+	}
+
+}
