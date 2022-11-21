@@ -1,0 +1,17 @@
+package day_0126_prof2;
+
+import java.util.List;
+
+public interface IBookManager {
+	void add(Book book);
+	void remove(String isbn) throws IsbnNotFoundException;
+	List<Book> getList(); // 매니저가 현재 보유중인 모든 책 정보 반환
+	Book searchByIsbn(String isbn) throws IsbnNotFoundException;
+	List<Book> searchByTitle(String title);
+	List<Magazine> getMagazines(); // 현재 보유중인 책들중 잡지만 추려서 반환
+	List<Book> getBooks(); // 현재 보유중인 책들 중 일반책들만(잡지제외) 추려서 반환
+	int getTotalPrice();
+	double getPriceAvg();
+	void sell(String isbn, int count) throws IsbnNotFoundException, QuantityException ; // 판매할 책 번호와 수량
+	void buy(String isbn, int count) throws IsbnNotFoundException ; // 입고할 책 번호와 수량
+}
