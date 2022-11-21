@@ -1,0 +1,126 @@
+package com.ssafy.ws06.step3;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class BookManagerImpl implements IBookManager {
+	private List<Book> b_List;
+
+//	private static final int MAX_SIZE=100; // List로 바꾸면서 사이즈 관련 값들이 불필요해짐.
+//	private int size = 0;
+
+	private BookManagerImpl() {
+		b_List = new ArrayList<>(); // ArrayList 객체 생성
+
+	}
+
+	private static BookManagerImpl BMI = new BookManagerImpl(); // BookManagerImpl 인스턴스 객체 생성
+
+	public static BookManagerImpl getInstance() { // BookManagerImpl 인스턴스 객체 반환
+		return BMI;
+
+	}
+
+	// 1. 도서 추가
+	public void add(Book book) {
+		b_List.add(book);
+
+	}
+
+	// 2. 도서 반환
+	@Override
+	public ArrayList<Book> getList() {
+		return (ArrayList<Book>) b_List;
+
+	}
+
+	// 3. 도서 삭제 (도서 번호 이용)
+	public void remove(String isbn) {
+		int size = b_List.size();
+		for (int i = 0; i < size; i++) {
+			if (b_List.get(i).getIsbn().equals(isbn)) {
+				b_List.remove(i);
+				return;
+
+			}
+		}
+	}
+
+	// 4. 일반 도서 목록 반환
+	@Override
+	public ArrayList<Book> getBooks() {
+		ArrayList<Book> temp = new ArrayList<>(); // ArrayList 객체 생성
+		for (Book b : b_List) { // ArrayList 객체를 돌아서
+			if (!(b instanceof Magazine)) { // 잡지를 상속하지 않는 객체가 있으면(일반 도서 목록)
+				temp.add(b); // temp 변수에 저장
+
+			}
+		}
+		return temp; // 반환
+
+	}
+
+	// 5. 잡지 목록 반환
+	@Override
+	public ArrayList<Magazine> getMagazines() {
+		ArrayList<Magazine> temp = new ArrayList<>(); // ArrayList 객체 생성
+		for (Book b : b_List) { // ArrayList 객체를 돌아서
+			if (b instanceof Magazine) { // 잡지를 상속하는 객체가 있으면(잡지 목록)
+				temp.add((Magazine) b); // temp 변수에 저장
+
+			}
+
+		}
+		return temp; // 반환
+
+	}
+
+	// 6. 도서 번호 검색 반환
+	@Override
+	public ArrayList<Book> searchByIsbn(String isbn) {
+		ArrayList<Book> temp = new ArrayList<>(); // ArrayList 객체 생성
+		for (Book b : b_List) { // ArrayList 객체를 돌아서
+			if (b.getIsbn().equals("45678")) { // Book 클래스의 isbn과 같으면,
+				temp.add(b); // temp 변수에 저장
+
+			}
+		}
+		return temp; // 반환
+
+	}
+
+	// 7. 도서 제목 검색 반환
+	@Override
+	public ArrayList<Book> searchByTitle(String title) {
+		ArrayList<Book> temp = new ArrayList<>(); // ArrayList 객체 생성
+		for (Book b : b_List) { // ArrayList 객체를 돌아서
+			if (b.getTitle().contains("Java")) { // Book 클래스의 제목과 같으면,
+				temp.add(b); // temp 변수에 저장
+
+			}
+		}
+		return temp; // 반환
+
+	}
+
+	// 8. 도서리스트의 가격의 총합을 반환
+	@Override
+	public int getTotalPrice() {
+		int total = 0; // 총합 초기화
+		for (Book b : b_List) {
+			total += b.getPrice(); // 총합 = b_List의 가격 누적의 합
+
+		}
+		return total; // 총합 반환
+
+	}
+
+	// 9. 도서리스트의 가격의 평균을 반환
+	@Override
+	public double getPriceAvg() {
+		// 평균[가격의 총합 / b_List의 크기] 반환
+		return (double) getTotalPrice() / b_List.size();
+
+	}
+
+}
