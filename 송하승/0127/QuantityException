@@ -1,0 +1,13 @@
+package day0127;
+
+public class QuantityException extends Exception {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public QuantityException() {
+		super("해당 책의 재고가 부족합니다.");
+	}
+
+}
