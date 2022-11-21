@@ -1,0 +1,73 @@
+package day_0126_prof2;
+
+import java.util.List;
+
+public class BookManagerImpl2 implements IBookManager{
+
+	@Override
+	public void add(Book book) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void remove(String isbn) throws IsbnNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Book> getList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Book searchByIsbn(String isbn) throws IsbnNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Book> searchByTitle(String title) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Magazine> getMagazines() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Book> getBooks() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getTotalPrice() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getPriceAvg() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void sell(String isbn, int count) throws IsbnNotFoundException, QuantityException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void buy(String isbn, int count) throws IsbnNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
