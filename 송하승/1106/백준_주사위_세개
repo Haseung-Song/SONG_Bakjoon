@@ -1,0 +1,57 @@
+package day1106;
+
+import java.util.Scanner;
+
+public class 백준_주사위_세개 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); // Scanner 클래스 객체 생성
+
+		int A = sc.nextInt(); // int형 정수 A 입력 (첫 번째 눈)
+		int B = sc.nextInt(); // int형 정수 B 입력 (두 번째 눈)
+		int C = sc.nextInt(); // int형 정수 C 입력 (세 번째 눈)
+
+		// 조건 1 : 같은 눈이 3개 나오는 경우, 상금 = 10000원 + (같은 눈) * 1000원
+		if (A == B && B == C && C == A) {
+			int K = A = B = C; // 임의의 정수 K = A = B = C
+			System.out.println(10000 + K * 1000); // 상금 출력
+
+			// 조건 2 : 같은 눈이 2개만 나오는 경우, 상금 = 1000원 + (같은 눈) * 100원
+		} else if (A == B || B == C || C == A) {
+			if (A == B) { // A와 B가 같은 경우
+				int L = A = B; // 임의의 정수 L = A = B
+				System.out.println(1000 + L * 100); // 상금 출력
+
+			}
+
+			if (B == C) { // B와 C가 같은 경우
+				int M = B = C; // 임의의 정수 M = B = C
+				System.out.println(1000 + M * 100); // 상금 출력
+
+			}
+
+			if (C == A) { // C와 A가 같은 경우
+				int N = C = A; // 임의의 정수 N = C = A
+				System.out.println(1000 + N * 100); // 상금 출력
+
+			}
+
+			// 조건 3 : 모두 다른 눈이 나오는 경우, 상금 = (그 중 가장 큰 눈) * 100원
+		} else {
+			int max_V = A; // 최댓값을 임의로 A로 설정
+
+			if (B > max_V) { // 만약 B가 A보다 크다면
+				max_V = B; // B가 최댓값이다.
+
+			} else if (C > max_V) { // 만약 C가 B보다 크다면
+				max_V = C; // C가 최댓값이다.
+
+			}
+
+			System.out.println(max_V * 100); // 상금 출력
+
+		}
+
+	}
+
+}
