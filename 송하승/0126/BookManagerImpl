@@ -1,0 +1,166 @@
+package com.ssafy.ws07.step3;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class BookManagerImpl implements IBookManager {
+	private List<Book> b_List;
+
+//	private static final int MAX_SIZE=100; // List로 바꾸면서 사이즈 관련 값들이 불필요해짐.
+//	private int size = 0;
+
+	private BookManagerImpl() {
+		b_List = new ArrayList<>(); // ArrayList 객체 생성
+
+	}
+
+	private static BookManagerImpl BMI = new BookManagerImpl(); // BookManagerImpl 인스턴스 객체 생성
+
+	public static BookManagerImpl getInstance() { // BookManagerImpl 인스턴스 객체 반환
+		return BMI;
+
+	}
+
+	// 1. 도서 추가
+	public void add(Book book) {
+		b_List.add(book); // b_List에 책을 추가함.
+		return; // 반환;
+
+	}
+
+	// 2. 도서 반환
+	@Override
+	public ArrayList<Book> getList() {
+		return (ArrayList<Book>) b_List; // 추가한 (ArrayList)의 b_List를 반환
+
+	}
+
+	// 3. 도서 삭제 (도서 번호 이용)
+	public void remove(String isbn) {
+		int size = b_List.size(); // b_List의 크기 변수 생성
+		for (int i = 0; i < size; i++) { // b_List의 크기만큼 반복문
+			if (b_List.get(i).getIsbn().equals(isbn)) { // 가져온 책(i번째)의 도서 번호와 일치하면,
+				b_List.remove(i); // 가져온 책(i번째)를 b_List에서 제거함.
+				return; // 반환
+
+			}
+		}
+	}
+
+	// 4. 일반 도서 목록 반환
+	@Override
+	public ArrayList<Book> getBooks() {
+		ArrayList<Book> temp = new ArrayList<>(); // ArrayList 객체 생성
+		for (Book b : b_List) { // ArrayList 객체를 돌아서
+			if (!(b instanceof Magazine)) { // 잡지를 상속하지 않는 객체가 있으면(일반 도서 목록)
+				temp.add(b); // temp 변수에 저장
+
+			}
+		}
+		return temp; // 반환
+
+	}
+
+	// 5. 잡지 목록 반환
+	@Override
+	public ArrayList<Magazine> getMagazines() {
+		ArrayList<Magazine> temp = new ArrayList<>(); // ArrayList 객체 생성
+		for (Book b : b_List) { // ArrayList 객체를 돌아서
+			if (b instanceof Magazine) { // 잡지를 상속하는 객체가 있으면(잡지 목록)
+				temp.add((Magazine) b); // temp 변수에 저장
+
+			}
+
+		}
+		return temp; // 반환
+
+	}
+
+	// 6. 도서 번호 검색 반환
+	@Override
+	public ArrayList<Book> searchByIsbn(String isbn) {
+		ArrayList<Book> temp = new ArrayList<>(); // ArrayList 객체 생성
+		for (Book b : b_List) { // ArrayList 객체를 돌아서
+			if (b.getIsbn().equals("45678")) { // Book 클래스의 isbn과 같으면,
+				temp.add(b); // temp 변수에 저장
+
+			}
+		}
+		return temp; // 반환
+
+	}
+
+	// 7. 도서 제목 검색 반환
+	@Override
+	public ArrayList<Book> searchByTitle(String title) {
+		ArrayList<Book> temp = new ArrayList<>(); // ArrayList 객체 생성
+		for (Book b : b_List) { // ArrayList 객체를 돌아서
+			if (b.getTitle().contains("Java")) { // Book 클래스의 제목과 같으면,
+				temp.add(b); // temp 변수에 저장
+
+			}
+		}
+		return temp; // 반환
+
+	}
+
+	// 8. 도서 판매(도서 번호 이용)
+
+	@Override
+	public void sell(String isbn, int quantity) throws QuantityException {
+		int size = b_List.size(); // b_List의 크기 변수 생성
+		for (int i = 0; i < size; i++) { // b_List의 크기만큼 반복문
+			if (b_List.get(i).getIsbn().equals(isbn)) { // 가져온 책(i번째)의 도서 번호와 일치하면,
+				// getter, setter 이용!!!
+				if (b_List.get(i).getQuantity() >= quantity) { // 재고 수량이 quantity보다 크거나 같으면(즉, 재고가 남아있으면)
+					b_List.get(i).setQuantity(b_List.get(i).getQuantity() - quantity); // 남은 수량 = (재고 수량 - quantity)
+
+				} else { // 판매 재고 부족
+					throw new QuantityException();
+
+				}
+				return;
+
+			}
+
+		}
+
+	}
+
+	// 9. 도서 구매(도서 번호 이용)
+
+	@Override
+	public void buy(String isbn, int quantity) {
+		int size = b_List.size(); // b_List의 크기 변수 생성
+		for (int i = 0; i < size; i++) { // b_List의 크기만큼 반복문
+			if (b_List.get(i).getIsbn().equals(isbn)) { // 가져온 책(i번째)의 도서 번호와 일치하면,
+				b_List.get(i).setQuantity(b_List.get(i).getQuantity() + quantity); // 남은 재고 수량 = (재고 수량 + quantity)
+				return;
+
+			}
+
+		}
+
+	}
+
+	// 10. 도서리스트의 가격의 총합을 반환
+	@Override
+	public int getTotalPrice() {
+		int total = 0; // 총합 초기화
+		for (Book b : b_List) {
+			total += b.getPrice(); // 총합 = b_List의 가격 누적의 합
+
+		}
+		return total; // 총합 반환
+
+	}
+
+	// 11. 도서리스트의 가격의 평균을 반환
+	@Override
+	public double getPriceAvg() {
+		// 평균[가격의 총합 / b_List의 크기] 반환
+		return (double) getTotalPrice() / b_List.size();
+
+	}
+
+}
