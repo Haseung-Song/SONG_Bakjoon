@@ -1,0 +1,30 @@
+package com.ssafy.ws01.step3;
+
+public class DigitTest1 {
+
+	public static void main(String[] args) {
+
+		int num[] = new int[15];
+		int result = 0;
+
+		// 3중 for문
+		for (int i = 0; i < 5; i++) { // 5줄 출력
+			for (int j = 0; j < i; j++) { // 숫자 출력을 위한 공백 생성
+				System.out.print("  "); // 2칸 공백
+
+			}
+			// 각 행에서 -> 1행(숫자 5개), 2행(숫자 4개), 3행(숫자 3개), 4행(숫자 2개), 5행(숫자 1개)
+			// 즉, 각 행의 숫자의 개수를 출력
+			for (int k = 0; k < 5 - i; k++) {
+				result += 1;
+				num[i] = result;
+				System.out.printf("%2d", num[i]); // 각 숫자의 간격(2칸 공백) 설정, 숫자 출력
+
+			}
+			System.out.println();
+
+		}
+
+	}
+
+}
