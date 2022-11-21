@@ -1,0 +1,27 @@
+package test_Prepare;
+
+public class Digit_Test2 { // 역직삼각형(왼편 직각)
+
+	public static void main(String[] args) {
+		int[] num = new int[15];
+		int result = 0;
+
+		for (int i = 0; i < 5; i++) { // 5행 출력
+			for (int j = 0; j < i; j++) { // 숫자 출력을 위한 공백 생성
+				System.out.print(""); // 0칸 공백
+
+			}
+
+			for (int k = 0; k < 5 - i; k++) { // 1행부터 5행까지 숫자의 개수(5, 4, 3, 2, 1)
+				result += 1;
+				num[i] = result;
+				System.out.printf("%2d", num[i]); // 2칸 공백(각 숫자의 간격)
+
+			}
+			System.out.println();
+
+		}
+
+	}
+
+}
