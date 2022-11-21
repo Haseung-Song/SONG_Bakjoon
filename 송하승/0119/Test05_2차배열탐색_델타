@@ -1,0 +1,31 @@
+package day0119;
+
+public class Test05_2차배열탐색_델타 {
+
+	public static void main(String[] args) {
+		int[][] arr = { { 8, 4, 5, 6 }, { 8, 45, 12, 6 }, { 9, 8, 4, 1 }, { 1, 3, 5, 7 } };
+
+		int[] di = { -1, 0, +1, 0 };
+		int[] dj = { 0, +1, 0, -1 };
+
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[i].length; j++) {
+				int sum = 0; // 현재 주인공인 칸 i, j에서 주변에 있는 홀수를 더할 변수
+
+				for (int d = 0; d < 4; d++) {
+					int ni = i + di[d]; // d에 따라 0, +1, -1 같은 값이 더해짐.
+					int nj = j + dj[d]; // 즉, 현재칸 i, j의 하나 옆칸 좌표가 계산됨.
+
+					if (ni >= 0 && ni < arr.length && nj >= 0 && nj < arr.length) {
+
+					}
+				}
+				// 현재 내 칸[i,j]의 옆 칸 홀수의 합 = sum!
+				System.out.println("현재 내 칸[" + i + "," + j + "]의 옆 칸 홀수의 합 = " + sum);
+
+			}
+		}
+
+	}
+
+}
