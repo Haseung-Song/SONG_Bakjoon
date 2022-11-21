@@ -1,0 +1,38 @@
+package day1110;
+
+import java.util.Scanner;
+
+public class 백준_별_찍기_1 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); // Scanner 클래스 객체 생성
+
+		int N = sc.nextInt(); // 별을 출력하는 줄의 개수 N
+
+		// 1_1. 직각삼각형 모양의 별 찍기
+
+		for (int i = 1; i <= N; i++) { // 바깥 반복문 : 행을 나타냄. 1부터 N까지 행이 증가함.
+			for (int j = 1; j <= i; j++) { // 안쪽 반복문 : 열을 나타냄. 1부터 i까지 별이 증가함.
+				System.out.print("*"); // * 출력
+
+			}
+
+			System.out.println(); // 행 띄어쓰기
+
+		}
+
+		// 1_2. 역직각삼각형 모양 별 찍기
+
+//		for (int i = 1; i <= N; i++) { // 바깥 반복문 : 행을 나타냄. 1부터 N까지 행이 증가함.
+//			for (int j = N; j >= i; j--) { // 안족 반복문 : 열을 나타냄. N부터 i까지 별이 감소함.
+//				System.out.print("*"); // * 출력
+//
+//			}
+//
+//			System.out.println(); // 행 띄어쓰기
+//
+//		}
+
+	}
+
+}
