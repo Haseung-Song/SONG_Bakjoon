@@ -1,0 +1,44 @@
+package day1114;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class 백준_개수_세기_3 {
+
+	public static void main(String[] args) throws IOException {
+		// BufferedReader 클래스 객체 생성
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		int N = Integer.parseInt(br.readLine()); // 반복할 테스트 횟수 N
+
+		int number[] = new int[N]; // 1차원 배열 생성 및 초기화(크기 : N)
+
+		int count = 0; // 카운트 초기화
+
+		// 방법 2 : StringTokenizer : String(문자열)을 토큰으로 Split할 수 있음. -> 배열을 쓸 필요가 없음.
+		String str = br.readLine(); // 한 줄 통으로 입력받기!!!
+
+		StringTokenizer st = new StringTokenizer(str); // StringTokenizer 클래스 객체 생성
+
+		for (int i = 0; i < N; i++) { // N만큼 반복!!!
+			number[i] = Integer.parseInt(st.nextToken()); // 배열 원소값 입력.
+
+		}
+
+		int v = Integer.parseInt(br.readLine()); // 찾으려는 정수 v 입력받기!
+
+		for (int i = 0; i < N; i++) { // N만큼 반복!!!
+			if (number[i] == v) { // 입력된 배열 원소값이 찾으려는 정수 v와 같다면
+				count++; // 카운트 증가
+
+			}
+
+		}
+
+		System.out.println(count); // 카운트 출력(= v의 개수)
+
+	}
+
+}
