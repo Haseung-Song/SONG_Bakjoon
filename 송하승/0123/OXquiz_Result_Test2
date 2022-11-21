@@ -1,0 +1,46 @@
+package test_Prepare;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class OXquiz_Result_Test2 {
+
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); // 입출력 함수 생성
+
+		int TC = Integer.parseInt(br.readLine()); // 진행할 테스트 횟수
+
+		String arr[] = new String[TC]; // 진행할 테스트 횟수만큼 String 배열에 저장
+
+		for (int tc = 0; tc < TC; tc++) {
+			int con = 0; // 연속 횟수
+			int sum = 0; // 누적 점수
+
+			arr[tc] = br.readLine(); // 한 줄 통으로 읽어서 arr[tc] 배열에 저장(띄어쓰기 있는 문자열)
+
+			StringTokenizer st = new StringTokenizer(arr[tc]); // 하나씩 끊은 후에,
+
+			while (st.hasMoreTokens()) { // 사용할 토큰이 남아있는 동안
+				String token = st.nextToken(); // 다음 사용할 토큰을 문자열 token에 저장
+				if (token.equals("O")) { // token 문자열이 "O"와 같다면,
+					con++; // 연속 횟수 증가
+
+				} else if (token.equals("X")) { // token 문자열이 "X"와 같다면,
+					con = 0; // 연속 횟수 초기화
+
+				} else { // 그 이외에는
+					continue; // 넘어가고 다음 반복문을 실행한다.
+
+				}
+				sum += con; // 누적 점수 = 연속 횟수의 누적 합
+
+			}
+			System.out.println(sum);
+
+		}
+
+	}
+
+}
