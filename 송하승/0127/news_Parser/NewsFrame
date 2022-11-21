@@ -1,0 +1,62 @@
+package news_Parser;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+public class NewsFrame extends JFrame{
+	// 화면에 보여질 놈들
+	private JButton btnRefresh;
+	private JList<News> list;
+	private JTextArea ta;
+	private JScrollPane scroll;
+	
+	// 데이터 가져오기를 담당할 놈
+	private NewsSAXParser newsParser = new NewsSAXParser();
+	
+	public NewsFrame() {
+		btnRefresh = new JButton("뉴스내용 새로고침");
+		list = new JList<>();
+		scroll = new JScrollPane(list);
+		ta = new JTextArea("");
+		ta.setEditable(false);
+		
+		this.add(btnRefresh);
+		this.add(scroll);
+		this.add(ta);
+		
+		this.setLayout(new GridLayout(3,1));
+		
+		this.setSize(400,500);
+		this.setVisible(true);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE); // x버튼 누르면 프로그램 종료되는 설정.
+		
+		// 새로고침 버튼 눌렸을 때
+		btnRefresh.addActionListener((e)->{ 
+			List<News> newsList = newsParser.readNewsXML();
+			list.removeAll();
+			list.setListData(newsList.toArray(new News[newsList.size()]));
+		});
+		
+		// 기사 제목중 하나를 선택했을 때
+		list.addListSelectionListener((e)->{
+			News news = list.getSelectedValue();
+			ta.setText(news.getDesc());
+		});
+	}
+}
+
+
+
+
+
+
