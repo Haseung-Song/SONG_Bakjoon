@@ -1,0 +1,36 @@
+package test_Prepare;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class OX갯수세기_Test1 {
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); // 입출력 함수 생성
+
+		String line = br.readLine(); // 한 줄 통으로 읽어서 line 변수에 저장(띄어쓰기 있는 문자열)
+
+		StringTokenizer st = new StringTokenizer(line); // 하나씩 끊은 후에,
+
+		int CountO = 0; // O 카운트 초기화
+		int CountX = 0; // X 카운트 초기화
+
+		while (st.hasMoreTokens()) { // 사용 가능한 토큰이 남아있는 동안
+			String token = st.nextToken(); // 다음 사용할 토큰을 문자열 token에 저장
+			if (token.equals("O")) { // 만약 토큰이 "O"라면,
+				CountO++; // O 카운트 증가
+
+			} else { // 그렇지 않다면,
+				CountX++; // X 카운트 증가
+
+			}
+		}
+
+		System.out.println("O의 개수 = " + CountO); // O 카운트 개수 출력
+		System.out.println("X의 개수 = " + CountX); // X 카운트 개수 출력
+
+	}
+
+}
