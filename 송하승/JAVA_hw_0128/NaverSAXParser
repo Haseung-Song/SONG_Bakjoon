@@ -1,0 +1,12 @@
+package com.ssafy.hw08.step2;
+
+import java.util.List;
+
+public class NaverSAXParser {
+
+	public List<Naver> readNaverXML() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
