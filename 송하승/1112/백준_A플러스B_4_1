@@ -1,0 +1,23 @@
+package day1112;
+
+import java.util.Scanner;
+
+public class 백준_A플러스B_4_1 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); // Scanner 클래스 객체 생성
+
+		// hasNext() 메서드 : 현재 입력된 토큰이 있으면 true, 토큰이 없으면 false를 return
+		while (sc.hasNext()) { // EOF(End Of File) : 더 이상 읽을 데이터가 없을 때까지 반복문을 실행
+			int A = sc.nextInt(); // int형 A 입력받기!!!
+			int B = sc.nextInt(); // int형 B 입력받기!!!
+
+			System.out.println(A + B); // A + B 출력
+
+		}
+
+		sc.close(); // Scanner 종료
+
+	}
+
+}
