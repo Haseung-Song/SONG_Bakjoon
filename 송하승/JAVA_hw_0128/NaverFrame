@@ -1,0 +1,55 @@
+package com.ssafy.hw08.step2;
+
+import java.awt.GridLayout;
+import java.util.List;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+public class NaverFrame extends JFrame {
+	// 화면에 보여지는 것들
+	private JButton btnRefresh;
+	private JList<Naver> list;
+	private JTextArea ta;
+	private JScrollPane scroll;
+
+	private NaverSAXParser naverParser = new NaverSAXParser();
+
+	public NaverFrame() {
+		btnRefresh = new JButton("뉴스내용 새로고침");
+		list = new JList<>();
+		scroll = new JScrollPane(list);
+		ta = new JTextArea("");
+		ta.setEditable(false);
+
+		this.add(btnRefresh);
+		this.add(scroll);
+		this.add(ta);
+
+		this.setLayout(new GridLayout(3, 1));
+
+		this.setSize(400, 500);
+		this.setVisible(true);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE); // x버튼 누르면 프로그램 종료되는 설정
+
+		// 새로고침 버튼 눌렸을 때
+		btnRefresh.addActionListener((e) -> {
+			List<Naver> naverList = naverParser.readNaverXML();
+			list.removeAll();
+			list.setListData(naverList.toArray(new Naver[naverList.size()]));
+
+		});
+
+		// 기사 제목중 하나를 선택했을 때
+		list.addListSelectionListener((e) -> {
+			Naver naver = list.getSelectedValue();
+			ta.setText(naver.getDesc());
+			
+		});
+
+	}
+
+}
