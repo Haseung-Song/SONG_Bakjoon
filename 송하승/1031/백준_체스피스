@@ -1,0 +1,27 @@
+package day1031;
+
+import java.util.Scanner;
+
+public class 백준_체스피스 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); // Scanner 클래스 객체 생성
+
+		int A = sc.nextInt(); // int형 정수 A(킹) 입력
+		int B = sc.nextInt(); // int형 정수 B(퀸) 입력
+		int C = sc.nextInt(); // int형 정수 C(룩) 입력
+		int D = sc.nextInt(); // int형 정수 D(비숍) 입력
+		int E = sc.nextInt(); // int형 정수 E(나이트) 입력
+		int F = sc.nextInt(); // int형 정수 F(폰) 입력
+
+		// 본래 개수 (킹 : 1, 퀸 : 1, 룩 : 2, 비숍 : 2, 나이트 : 2, 폰 : 8) - 입력 개수 = 출력 개수
+		System.out.print(1 - A + " ");
+		System.out.print(1 - B + " ");
+		System.out.print(2 - C + " ");
+		System.out.print(2 - D + " ");
+		System.out.print(2 - E + " ");
+		System.out.print(8 - F);
+
+	}
+
+}
