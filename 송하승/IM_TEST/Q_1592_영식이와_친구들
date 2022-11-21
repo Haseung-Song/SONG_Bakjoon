@@ -1,0 +1,24 @@
+package IM_TEST;
+
+import java.util.Scanner;
+
+public class Q_1592_영식이와_친구들 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); // 입출력 함수 선언
+
+		int N = sc.nextInt(); // 영식이와 친구들 수
+		int M = sc.nextInt(); // 공을 받는 횟수
+		int L = sc.nextInt(); // L번째 있는 사람
+
+		// 음수가 나오는 것을 방지하려고 N을 더한다!
+		// 동쪽으로 이동 : (N + idx + L) % N
+		// 서쪽으로 이동 : (N + idx - L) % N
+		
+		
+		
+		
+
+	}
+
+}
