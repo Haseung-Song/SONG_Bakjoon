@@ -1,0 +1,30 @@
+package day0112;
+
+import java.util.Scanner;
+
+public class SWExpertAcademy {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+
+		int TC = sc.nextInt(); // 진행할 테스트 횟수
+
+		for (int tc = 1; tc <= TC; tc++) {
+
+			int sum = 0; // sum을 누적하는 것이 아님. 진행할 테스트 횟수마다 sum이 초기화됨.
+
+			for (int i = 0; i < 10; i++) {
+				int num = sc.nextInt();
+
+				if (num % 2 == 1) {
+					sum += num;
+				}
+
+			}
+			System.out.println("#" + tc + " " + sum);
+		}
+
+	}
+
+}
