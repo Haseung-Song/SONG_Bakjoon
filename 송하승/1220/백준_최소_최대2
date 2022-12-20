@@ -1,0 +1,29 @@
+package day1220;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class 백준_최소_최대2 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); // Scanner 클래스 객체 생성
+
+		int N = sc.nextInt(); // 정수 N 입력받기!
+
+		int A[] = new int[N]; // 배열 A 생성 및 초기화(크기 : N)
+
+		for (int i = 0; i < N; i++) { // N만큼 반복!
+			A[i] = sc.nextInt(); // 원소값 입력받기!
+
+		}
+
+		Arrays.sort(A); // 원소값 오름차순으로 정렬!
+
+		// 1. 최솟값 : 배열 A의 첫번째 원소 A[0]
+		// 2. 최댓값 : 배열 A의 마지막 원소 A[N - 1]
+
+		System.out.println(A[0] + " " + A[N - 1]); // 최솟값 및 최댓값을 공백으로 구분해 출력!
+
+	}
+
+}
