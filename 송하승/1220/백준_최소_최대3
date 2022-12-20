@@ -1,0 +1,42 @@
+package day1220;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class 백준_최소_최대3 {
+
+	public static void main(String[] args) throws IOException {
+		// BufferedReader 클래스 객체 생성
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		int N = Integer.parseInt(br.readLine()); // 반복할 테스트 횟수 N
+
+		// 방법 1 : split 메서드로 문자열을 나눌 수 있음. -> 각각을 배열로 배정함. Ex. "1" "2" ...
+		String str = br.readLine(); // 한 줄 통으로 입력받기!!!
+
+		String number[] = str.split(" "); // " " (꼭 띄어쓰기!!!)
+
+		int min_N = Integer.MAX_VALUE; // 최솟값 초기화
+		int max_N = Integer.MIN_VALUE; // 최댓값 초기화
+
+		for (int i = 0; i < N; i++) { // N만큼 반복!!!
+			int array = Integer.parseInt(number[i]); // 배열 원소값 입력받기!!!
+
+			if (array < min_N) { // 만약 배열 원소값이 min_N보다 작다면
+				min_N = array; // 그 원소값이 최솟값이다.
+
+			}
+
+			if (array > max_N) { // 만약 배열 원소값이 max_N보다 크다면
+				max_N = array; // 그 원소값이 최댓값이다.
+
+			}
+
+		}
+
+		System.out.println(min_N + " " + max_N); // 최솟값 및 최댓값을 공백으로 구분해 출력!
+
+	}
+
+}
