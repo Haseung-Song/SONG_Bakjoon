@@ -1,0 +1,39 @@
+package day1220;
+
+import java.util.Scanner;
+
+public class 백준_최소_최대1 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); // Scanner 클래스 객체 생성
+
+		int N = sc.nextInt(); // 정수 N 입력받기!
+
+		int[] A = new int[N]; // 배열 A 생성 및 초기화(크기 : N)
+
+		// 이 방식 꼭 기억하기!!!
+		int min_N = Integer.MAX_VALUE; // 배열 A의 최솟값 초기화
+		int max_N = Integer.MIN_VALUE; // 배열 A의 최댓값 초기화
+
+		for (int i = 0; i < N; i++) { // N만큼 반복!
+			A[i] = sc.nextInt(); // 원소값 입력받기!
+
+			// 최솟값 구하기
+			if (A[i] < min_N) { // 만약 배열 A 원소값이 min_N보다 작다면
+				min_N = A[i]; // 그 원소값이 최솟값이다.
+
+			}
+
+			// 최댓값 구하기
+			if (A[i] > max_N) { // 만약 배열 A 원소값이 max_N보다 크다면
+				max_N = A[i]; // 그 원소값이 최댓값이다.
+
+			}
+
+		}
+
+		System.out.println(min_N + " " + max_N); // 최솟값 및 최댓값을 공백으로 구분해 출력!
+
+	}
+
+}
