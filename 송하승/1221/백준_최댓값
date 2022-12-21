@@ -1,0 +1,34 @@
+package day1221;
+
+import java.util.Scanner;
+
+public class 백준_최댓값 {
+
+	final static int N = 9; // N = 9;
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); // Scanner 클래스 객체 생성
+
+		int[] num_arr = new int[N]; // 배열 num_arr 생성 및 초기화(크기 : N)
+
+		int max = Integer.MIN_VALUE; // 최댓값 초기화!
+
+		int idx = 0; // idx(?번째 수) 초기화!
+
+		for (int i = 0; i < N; i++) { // N만큼 반복!
+			num_arr[i] = sc.nextInt(); // 원소값 입력받기!
+
+			if (num_arr[i] > max) { // 만약 배열 num_arr 원소값이 max보다 크다면
+				max = num_arr[i]; // 그 원소값이 최댓값이다.
+				idx = i + 1; // 이 때, (i + 1)번째 수가 idx값이다.
+
+			}
+
+		}
+
+		System.out.println(max); // 최댓값 출력
+		System.out.println(idx); // 인덱스 출력
+
+	}
+
+}
