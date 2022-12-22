@@ -1,0 +1,49 @@
+package day1223;
+
+import java.util.Scanner;
+
+public class 백준_평균은_넘겠지 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); // Scanner 클래스 객체 생성
+
+		int C = sc.nextInt(); // 테스트 케이스 개수 C 입력받기!!!
+
+		for (int i = 0; i < C; i++) { // C만큼 반복!!!
+			int N = sc.nextInt(); // 학생의 수 N 입력받기
+
+			int[] score = new int[N]; // 1차원 배열 생성 및 초기화(크기 : N)!
+
+			int sum = 0; // 합계 점수 초기화!!!!!
+
+			float avg = 0; // 평균 점수 초기화!!!
+
+			for (int j = 0; j < N; j++) { // N만큼 반복!!!!
+				score[j] = sc.nextInt(); // N명의 점수!!!!!
+
+				sum += score[j]; // 합계 점수 = N명의 점수 누적의 합!
+
+				avg = (float) sum / N; // 평균 점수 = 합계 점수 / N!!!!
+
+			}
+
+			int cnt = 0; // 카운트 초기화!!!
+
+			for (int k = 0; k < N; k++) { // K만큼 반복!!!!
+				if (score[k] > avg) { // 만약, 평균보다 높은 점수가 있으면
+					cnt++; // 카운트 증가
+
+				}
+
+			}
+
+			// 소수점 3번째 자리까지 반올림하기!
+			String res = String.format("%.3f", ((float) cnt / N) * 100); // res = 평균을 넘는 학생들의 비율
+
+			System.out.println(res + "%"); // res + "%" 출력!!!
+
+		}
+
+	}
+
+}
