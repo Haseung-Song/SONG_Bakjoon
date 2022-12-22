@@ -1,0 +1,38 @@
+package day1222;
+
+import java.util.Scanner;
+
+public class 백준_평균 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); // Scanner 클래스 객체 생성
+
+		int N = sc.nextInt(); // 시험 본 과목의 개수 N 입력받기!!!
+
+		int[] num_arr = new int[N]; // 1차원 배열 생성 및 초기화(크기 : N)
+
+		int max = Integer.MIN_VALUE; // 최댓값 초기화!
+
+		int sum = 0; // 새로운 총 합 초기화!
+
+		float new_avg = 0; // 새로운 평균값 초기화! (소수점 6자리까지 출력 가능)
+
+		for (int i = 0; i < N; i++) { // N만큼 반복!!
+			num_arr[i] = sc.nextInt(); // 배열 원소값 입력받기!!
+
+			if (num_arr[i] > max) { // 만약, 배열 원소값이 max보다 크다면
+				max = num_arr[i]; // 그 원소값이 최댓값이다.
+
+			}
+
+			sum += num_arr[i]; // 총 합 = 원소값들의 합
+
+		}
+
+		new_avg = ((float) sum / (num_arr.length * max)) * 100; // 새로운 평균 구하기!!!
+
+		System.out.println(new_avg); // 새로운 평균 출력!!!
+
+	}
+
+}
