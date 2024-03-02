@@ -1,0 +1,15 @@
+using System;
+
+namespace 백준_단위_길이_재기
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var str = Console.ReadLine();
+            Console.WriteLine(str.Length);
+        }
+
+    }
+
+}
