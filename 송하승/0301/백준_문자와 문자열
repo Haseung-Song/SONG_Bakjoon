@@ -1,0 +1,17 @@
+using System;
+
+namespace 백준_문자와_문자열
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var str = Console.ReadLine();
+            var idx = int.Parse(Console.ReadLine());
+
+            Console.WriteLine(str[idx - 1]);
+        }
+
+    }
+
+}
