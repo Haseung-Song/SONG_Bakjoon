@@ -1,0 +1,24 @@
+using System;
+using System.Security.Cryptography;
+
+namespace 백준_그대로_출력하기
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                var str = Console.ReadLine();
+                if (string.IsNullOrEmpty(str))
+                {
+                    break;
+                }
+                Console.WriteLine(str);
+            }
+
+        }
+
+    }
+
+}
