@@ -1,0 +1,27 @@
+using System;
+
+namespace 백준_숫자의_합
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // 숫자: 숫자의 개수 N
+            var number = int.Parse(Console.ReadLine());
+
+            // 문자열: 숫자 N개
+            var inputs = Console.ReadLine();
+
+            // 총 합
+            int sum = 0;
+
+            for (int i = 0; i < number; i++)
+            {
+                sum += int.Parse(inputs[i].ToString());
+            }
+            Console.WriteLine(sum);
+        }
+
+    }
+
+}
