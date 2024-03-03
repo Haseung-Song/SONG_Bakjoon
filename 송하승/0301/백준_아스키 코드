@@ -1,0 +1,18 @@
+using System;
+
+namespace 백준_아스키_코드
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            char asc_chars = input[0];
+            int asc_output1 = asc_chars;
+            //int asc_output2 = Convert.ToInt32(asc_chars);
+            Console.WriteLine(asc_output1);
+        }
+
+    }
+
+}
