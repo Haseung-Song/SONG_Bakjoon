@@ -1,0 +1,32 @@
+using System;
+
+namespace 백준_단어의_개수
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var str = Console.ReadLine();
+            int cnt = 0; // 카운트
+            // Split 메서드 => 단어의 개수 세기.
+            string[] voc = str.Split(' ');
+            if (voc.Length > 0)
+            {
+                cnt = voc.Length;
+            }
+            // 앞 공백 제거
+            if (voc[0] == "")
+            {
+                cnt--;
+            }
+            // 뒤 공백 제거
+            if (voc[voc.Length - 1] == "")
+            {
+                cnt--;
+            }
+            Console.WriteLine(cnt);
+        }
+
+    }
+
+}
