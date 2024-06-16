@@ -1,0 +1,61 @@
+using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // 문자열 형식으로 입력을 받음.
+            string input = Console.ReadLine();
+
+            // 입력 받은 문자열을 공백을 기준으로 나눔.
+            string[] splitInput = input.Split(' ');
+
+            // 각 문자열 배열의 값을 정수형으로 파싱 후 n, m에 대입
+            int n = int.Parse(splitInput[0]);
+            int m = int.Parse(splitInput[1]);
+
+            // [n x m] 크기의 행렬 A 및 행렬 B 만들기 
+            int[,] matrixA = new int[n, m];
+            int[,] matrixB = new int[n, m];
+
+            // 행렬 A에 값 삽입
+            for (int i = 0; i < n; i++)
+            {
+                // 한 줄 입력 받고,
+                string[] splitLine1 = Console.ReadLine().Split();
+                for (int j = 0; j < m; j++)
+                {
+                    matrixA[i, j] = int.Parse(splitLine1[j]); // 한 줄의 각 요소를 int 형변환 후, 행렬에 저장
+                }
+
+            }
+
+            // 행렬 B에 값 삽입
+            for (int i = 0; i < n; i++)
+            {
+                // 한 줄 입력 받고,
+                string[] splitLine2 = Console.ReadLine().Split();
+                for (int j = 0; j < m; j++)
+                {
+                    matrixB[i, j] = int.Parse(splitLine2[j]); // 한 줄의 각 요소를 int 형변환 후, 행렬에 저장
+                }
+
+            }
+
+            // 행렬 덧셈 및 출력
+            for (int x = 0; x < n; x++)
+            {
+                for (int y = 0; y < m; y++)
+                {
+                    Console.Write(matrixA[x, y] + matrixB[x, y] + " ");
+                }
+                Console.WriteLine();
+            }
+
+        }
+
+    }
+
+}
