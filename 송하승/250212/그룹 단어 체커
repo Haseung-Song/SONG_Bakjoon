@@ -1,0 +1,51 @@
+using System;
+
+namespace 그룹_단어_체커_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int N = int.Parse(Console.ReadLine());
+            int cnt = 0; // 그룹 단어 개수
+            for (int i = 0; i < N; i++)
+            {
+                string voca = Console.ReadLine(); // 단어 개수 입력
+                char[] word = voca.ToCharArray();
+                if (IsGroupWord(word))
+                {
+                    cnt++;
+                }
+
+            }
+            Console.WriteLine(cnt); // 그룹 단어 개수 출력
+        }
+
+        private static bool IsGroupWord(char[] word)
+        {
+            bool[] seen = new bool[26]; // 알파벳 사용 여부 체크
+            for (int i = 0; i < word.Length; i++)
+            {
+                // 현재 문자가 처음 나오는 경우
+                if (!seen[word[i] - 'a'])
+                {
+                    seen[word[i] - 'a'] = true; // 기록
+                }
+                // 이미 나온 문자지만, 연속된 경우 = 패스
+                else if (i > 0 && word[i] == word[i - 1])
+                {
+                    continue;
+                }
+                // 이미 나온 문자지만, 연속되지 않은 경우
+                else
+                {
+                    return false;
+                }
+
+            }
+            return true;
+        }
+
+    }
+
+}
