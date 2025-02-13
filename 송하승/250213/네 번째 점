@@ -1,0 +1,56 @@
+using System;
+
+namespace 네_번째_점_백준
+{
+    // 수학적 접근법: 직사각형을 구성하려면 꼭짓점을 구성하는 x 좌표 및 y 좌표가 각각 2개씩 존재해야 함.
+    // 따라서, 2개씩 존재하지 않는 좌표(1개씩만 있는 좌표)가 각각의 (x4, y4) 좌표가 될 수 있음.
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            var x = new int[3];
+            var y = new int[3];
+            int a;
+            int b;
+            for (int i = 0; i < 3; i++)
+            {
+                var cord = Console.ReadLine().Split(' ');
+                x[i] = int.Parse(cord[0]);
+                y[i] = int.Parse(cord[1]);
+            }
+            // x 좌표의 첫 번째 좌표와 두 번째 좌표가 같으면, x4 좌표 = 세 번째 좌표
+            // x 좌표의 첫 번째 좌표와 세 번째 좌표가 같으면, x4 좌표 = 두 번째 좌표
+            // 이외의 경우엔 x4 좌표 = 첫 번째 좌표와 같다.
+            if (x[0] == x[1])
+            {
+                a = x[2];
+            }
+            else if (x[0] == x[2])
+            {
+                a = x[1];
+            }
+            else
+            {
+                a = x[0];
+            }
+            // y 좌표의 첫 번째 좌표와 두 번째 좌표가 같으면, y4 좌표 = 세 번째 좌표
+            // y 좌표의 첫 번째 좌표와 세 번째 좌표가 같으면, y4 좌표 = 두 번째 좌표
+            // 이외의 경우엔 y4 좌표 = 첫 번째 좌표와 같다.
+            if (y[0] == y[1])
+            {
+                b = y[2];
+            }
+            else if (y[0] == y[2])
+            {
+                b = y[1];
+            }
+            else
+            {
+                b = y[0];
+            }
+            Console.WriteLine("{0} {1}", a, b);
+        }
+
+    }
+
+}
