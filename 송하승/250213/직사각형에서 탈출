@@ -1,0 +1,23 @@
+using System;
+
+namespace 백준_직사각형에서_탈출
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            // 공백을 기준으로 문자열 분리하기 (배열)
+            var input = Console.ReadLine().Split(' ');
+            var x = int.Parse(input[0]);
+            var y = int.Parse(input[1]);
+            var w = int.Parse(input[2]);
+            var h = int.Parse(input[3]);
+            int a = Math.Min(x, w - x);
+            int b = Math.Min(y, h - y);
+            int min = Math.Min(a, b);
+            Console.WriteLine(min);
+        }
+
+    }
+
+}
