@@ -1,0 +1,52 @@
+using System;
+
+namespace 대지_백준
+{
+    public class Program
+    {
+        // int.MinValue, int.MaxValue를 쓰면, 어떤 입력이 들어오든 한 번은 반드시 초기화될 수 있음.
+        static void Main(string[] args)
+        {
+            var N = int.Parse(Console.ReadLine());
+            int x_Max = int.MinValue; // 초기값을 가장 작은 값으로 설정
+            int x_Min = int.MaxValue; // 초기값을 가장 큰 값으로 설정
+            int y_Max = int.MinValue; // 초기값을 가장 작은 값으로 설정
+            int y_Min = int.MaxValue; // 초기값을 가장 큰 값으로 설정
+            for (int i = 0; i < N; i++)
+            {
+                var coord = Console.ReadLine().Split(' ');
+                var x = int.Parse(coord[0]);
+                var y = int.Parse(coord[1]);
+                if (x > x_Max)
+                {
+                    x_Max = x;
+                }
+                if (x < x_Min)
+                {
+                    x_Min = x;
+                }
+                if (y > y_Max)
+                {
+                    y_Max = y;
+                }
+                if (y < y_Min)
+                {
+                    y_Min = y;
+                }
+
+            }
+            var x_Rect = x_Max - x_Min;
+            var y_Rect = y_Max - y_Min;
+            var extent = x_Rect * y_Rect;
+            if (N <= 1)
+            {
+                extent = 0;
+                Console.WriteLine(extent);
+                return;
+            }
+            Console.WriteLine(extent);
+        }
+
+    }
+
+}
