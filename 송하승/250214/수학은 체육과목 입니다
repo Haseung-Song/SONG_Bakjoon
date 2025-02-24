@@ -1,0 +1,19 @@
+using System;
+
+namespace 수학은_체육과목_입니다_백준
+{
+    // 둘레의 길이: 4N
+    // int를 사용하면 안되는 이유: int의 범위는 최대 입력값 10^9까지,
+    // 그러나, 문제의 조건에서 최댓값: 10^9 => 4N = 4 * 10^9 => int의 최댓값을 초과하는 범위가 나옴.
+    // 따라서, long의 범위 10^18까지 해줘야 오버플로우 오류가 나오지 않음.
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            long N = long.Parse(Console.ReadLine());
+            Console.WriteLine(4 * N);
+        }
+
+    }
+
+}
