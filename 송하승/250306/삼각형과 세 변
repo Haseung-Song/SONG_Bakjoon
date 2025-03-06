@@ -1,0 +1,47 @@
+using System;
+
+namespace 삼각형과_세_변_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                var side = Console.ReadLine().Split(' ');
+                var a = int.Parse(side[0]);
+                var b = int.Parse(side[1]);
+                var c = int.Parse(side[2]);
+                if (a == 0 && b == 0 && c == 0)
+                {
+                    break;
+                }
+                int max = Math.Max(a, Math.Max(b, c)); // max = max(a, b, c)
+                if ((c == max && a + b > max) || (b == max && a + c > max) || (a == max && b + c > max))
+                {
+                    if (a == b && b == c && c == a)
+                    {
+                        Console.WriteLine("Equilateral");
+                    }
+                    else if (a == b && b != c || b == c && c != a || c == a && a != b)
+                    {
+                        Console.WriteLine("Isosceles");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Scalene");
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("Invalid");
+                }
+
+            }
+
+        }
+
+    }
+
+}
