@@ -1,0 +1,39 @@
+using System;
+
+namespace 삼각형_외우기_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            var a = int.Parse(Console.ReadLine());
+            var b = int.Parse(Console.ReadLine());
+            var c = int.Parse(Console.ReadLine());
+            if (a + b + c == 180)
+            {
+                if (a == b && b == c && c == a)
+                {
+                    Console.WriteLine("Equilateral");
+                }
+
+                if (a == b && b != c || b == c && c != a || c == a && a != b)
+                {
+                    Console.WriteLine("Isosceles");
+                }
+
+                if (a != b && b != c && c != a)
+                {
+                    Console.WriteLine("Scalene");
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("Error");
+            }
+
+        }
+
+    }
+
+}
