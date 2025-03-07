@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace 블랙잭_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            var input = Console.ReadLine().Split(' ');
+            var N = int.Parse(input[0]);
+            var M = int.Parse(input[1]);
+
+            List<int> lst = new List<int>();
+            List<int> lst_Sum = new List<int>();
+
+            input = Console.ReadLine().Split(' ');
+            for (int i = 0; i < N; i++)
+            {
+                lst.Add(int.Parse(input[i]));
+            }
+
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = i + 1; j < N; j++)
+                {
+                    for (int k = j + 1; k < N; k++)
+                    {
+                        var sum = int.Parse(input[i]) + int.Parse(input[j]) + int.Parse(input[k]);
+                        if (sum > M) continue; // break문 (X) => continue로 제외시켜야 함!!!
+                        lst_Sum.Add(sum);
+                    }
+
+                }
+
+            }
+            Console.WriteLine(lst_Sum.Max()); // 리스트 최댓값 구하기 (Linq 라이브러리 사용)
+        }
+
+    }
+
+}
