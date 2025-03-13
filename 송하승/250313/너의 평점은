@@ -1,0 +1,69 @@
+using System;
+
+namespace 너의_평점은_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            // 과목평점
+            double num = 0;
+            // (학점 x 과목평점)의 합
+            double credit_sum = 0;
+            // 학점의 총합
+            double rating_sum = 0;
+
+            for (int i = 0; i < 20; i++)
+            {
+                var input = Console.ReadLine().Split(' ');
+                var rating = double.Parse(input[1]);
+                var credit = input[2];
+                switch (credit)
+                {
+                    case "A+":
+                        num = 4.5;
+                        break;
+                    case "A0":
+                        num = 4.0;
+                        break;
+                    case "B+":
+                        num = 3.5;
+                        break;
+                    case "B0":
+                        num = 3.0;
+                        break;
+                    case "C+":
+                        num = 2.5;
+                        break;
+                    case "C0":
+                        num = 2.0;
+                        break;
+                    case "D+":
+                        num = 1.5;
+                        break;
+                    case "D0":
+                        num = 1.0;
+                        break;
+                    case "F":
+                        num = 0.0;
+                        break;
+                    case "P":
+                        continue;
+                    default:
+                        break;
+                }
+                if (input[2] != "P")
+                {
+                    credit_sum += rating * num;
+                    rating_sum += rating;
+                }
+
+            }
+            var calc = credit_sum / rating_sum;
+            var result = String.Format("{0:N6}", calc);
+            Console.WriteLine(result);
+        }
+
+    }
+
+}
