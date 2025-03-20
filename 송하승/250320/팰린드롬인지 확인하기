@@ -1,0 +1,39 @@
+using System;
+
+namespace 팰린드롬인지_확인하기
+{
+    /// <summary>
+    /// 알파벳 소문자로만 이루어진 단어가 주어짐.
+    /// 이 때, 이 단어가 앞으로 읽을 때와 거꾸로 읽을 때 똑같은 단어인지 아닌지 확인하는 프로그램을 작성하라.
+    /// level, noon은 팰린드롬, baekjoon, online, judge는 팰린드롬이 아니다.
+    /// 첫째 줄에 단어가 주어짐. (입력) 이후, 첫째 줄에 팰린드롬이면 1, 아니면 0을 (출력)
+    /// </summary>
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            var voca = Console.ReadLine();
+            for (int i = 0; i < voca.Length; i++)
+            {
+                //Console.WriteLine(word[i]);
+                // Ex) 단어: level
+                // voca[0] == voca[4]
+                // voca[1] == voca[3]
+                // voca[2] == voca[2]
+                if (voca[i] == voca[voca.Length - 1 - i])
+                {
+                    continue;
+                }
+                else
+                {
+                    Console.WriteLine(0);
+                    return;
+                }
+
+            }
+            Console.WriteLine(1);
+        }
+
+    }
+
+}
