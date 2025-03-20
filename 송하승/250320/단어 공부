@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+
+namespace 단어_공부_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            var voca = Console.ReadLine();
+            var max_Key = 'A';
+            var max_Val = int.MinValue;
+            var max_Cnt = 0; // 최댓값을 가진 문자의 개수
+            Dictionary<char, int> wordCnt = new Dictionary<char, int>();
+            foreach (char c in voca)
+            {
+                var c_Upper = char.ToUpper(c); // [모든 문자]를 [대문자]로 변환
+                // 이후, 빈도수 계산
+                if (wordCnt.ContainsKey(c_Upper))
+                {
+                    wordCnt[c_Upper]++;
+                }
+                else
+                {
+                    wordCnt[c_Upper] = 1;
+                }
+
+            }
+
+            foreach (var pair in wordCnt)
+            {
+                // 최대 사용 알파벳 빈도!
+                if (max_Val < pair.Value)
+                {
+                    max_Val = pair.Value;
+                    max_Key = pair.Key;
+                    max_Cnt = 1;
+                }
+                else if (pair.Value == max_Val)
+                {
+                    max_Cnt++;
+                }
+
+            }
+            if (max_Cnt > 1)
+            {
+                Console.WriteLine("?");
+            }
+            else if (max_Cnt == 1) Console.WriteLine($"{max_Key}");
+        }
+
+    }
+
+}
