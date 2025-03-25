@@ -1,0 +1,59 @@
+using System;
+
+namespace 바구니_뒤집기_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            // 한 줄로 입력 받고, 공백 기준으로 나눔.
+            var M = Console.ReadLine().Split(' ');
+            int bsk = int.Parse(M[0]); // 바구니 수
+            int cnt = int.Parse(M[1]); // 바구니 순서 바꾸는 횟수
+            // 1차원 배열 선언 및 객체 생성 (바구니 수만큼)
+            var result = new int[bsk];
+            // result 초깃값 설정 완료
+            // result[0] = 1
+            // result[1] = 2
+            // result[2] = 3
+            // result[3] = 4
+            // result[4] = 5
+            for (int res = 0; res < bsk; res++)
+            {
+                result[res] = res + 1;
+            }
+            // 바구니 순서 (바꾸는 횟수만큼) 여러 줄로 입력 받고, 공백 기준으로 나눔.
+            // 이후에 (i, j) 값에 따라 Array.Reverse() 메서드 활용
+            for (int n = 0; n < cnt; n++)
+            {
+                var reverse_set = Console.ReadLine().Split(' ');
+                // 변수 재사용 (X) => (i, j) 대체!
+                var i = int.Parse(reverse_set[0]);
+                var j = int.Parse(reverse_set[1]);
+                // [i = j]인 경우는 예외 케이스 (제자리와 동일)!
+                if (i == j)
+                {
+                    continue;
+                }
+                // Reverse(Array, Int32, Int32) 함수: [1차원 배열] [result] 값의 시퀀스를 뒤집는 메서드.
+                // i - 1: 역방향 시작 인덱스
+                // j: 뒤집을 요소의 개수
+                // Ex.1) i = 1, j = 2
+                // Array.Reverse(result, 0, 2)
+                // 즉, result[0]의 값 1부터 2개, 즉, result[0], result[1] 값을 뒤집음.
+                // Ex.2) i = 1, j = 4
+                // Array.Reverse(result, 0, 4)
+                // 즉, result[0]의 값 1부터 4개, 즉, result[0]부터 result[3]까지의 값의 시퀀스를 뒤집음.
+                Array.Reverse(result, i - 1, j - i + 1);
+            }
+            // result 배열 각각의 원소 출력!
+            foreach (var output in result)
+            {
+                Console.Write(output + " ");
+            }
+
+        }
+
+    }
+
+}
