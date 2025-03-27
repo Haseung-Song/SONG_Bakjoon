@@ -1,0 +1,23 @@
+using System;
+
+namespace 코딩은_체육과목_입니다_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            var N = int.Parse(Console.ReadLine());
+            var cnt = (N / 4) + 1;
+            var str = new string[cnt];
+            str[0] = "long";
+            for (int i = 1; i < N / 4; i++)
+            {
+                str[i] = str[0];
+            }
+            var output = (string.Join(" ", str) + "int");
+            Console.WriteLine(output);
+        }
+
+    }
+
+}
