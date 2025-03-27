@@ -1,0 +1,23 @@
+using System;
+
+namespace 꼬마_정민_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            var input = Console.ReadLine().Split(' ');
+            long sum = 0;
+            // 입력: 첫 번째 줄에 A, B, C (1 <= A, B, C <= 10^12) 공백을 사이에 두고 주어짐.
+            // 즉, int형으로 안되고 long 형을 써야 함.
+            for (long i = 0; i <= 2; i++)
+            {
+                var cal = long.Parse(input[i]);
+                sum += cal;
+            }
+            Console.WriteLine(sum);
+        }
+
+    }
+
+}
