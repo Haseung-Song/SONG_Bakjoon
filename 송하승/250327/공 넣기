@@ -1,0 +1,61 @@
+using System;
+using System.Collections;
+
+namespace 공_넣기_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            // 공백으로 구분하여 입력!!
+            var input = Console.ReadLine().Split(' ');
+
+            var bsk_Cnt = int.Parse(input[0]); // 바구니 갯수
+            var bsk_Idx = int.Parse(input[1]); // 바구니 범위
+
+            // ArrayList 클래스 객체 생성 & 초기화
+            ArrayList arrayList = new ArrayList();
+            // arrayList[0] = 0
+            // arrayList[1] = 0
+            // arrayList[2] = 0
+            // arrayList[3] = 0
+            // arrayList[4] = 0
+            for (int num = 0; num < bsk_Cnt; num++)
+            {
+                arrayList.Add(0); // 모든 요소를 0으로 채워넣음.
+            }
+
+            // 바구니 범위만큼 for문을 돌려서
+            for (int n = 0; n < bsk_Idx; n++)
+            {
+                // 공백으로 구분하여 입력!!
+                var way = Console.ReadLine().Split(' ');
+
+                int i = int.Parse(way[0]); // i번 바구니
+                int j = int.Parse(way[1]); // j번 바구니
+                int k = int.Parse(way[2]); // k번 [번호]
+                // i번 ~ j번까지 카운트!
+                var idx_Cnt = j - i + 1;
+                // 인덱스 계산 시 반드시 [첫 번째 요소 i - 1]
+                arrayList.RemoveRange(index: i - 1, idx_Cnt);
+                // k값을 idx_Cnt만큼 리스트 콜렉션화
+                ArrayList insertK = new ArrayList();
+                for (int m = 0; m < idx_Cnt; m++)
+                {
+                    insertK.Add(k); // insertK에 k값을 채워넣음.
+                }
+                // 인덱스 계산 시 반드시 [첫 번째 요소 i - 1]
+                arrayList.InsertRange(index: i - 1, insertK);
+            }
+
+            // 공의 번호를 공백으로 구분 출력
+            foreach (var output in arrayList)
+            {
+                Console.Write(output + " ");
+            }
+
+        }
+
+    }
+
+}
