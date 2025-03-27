@@ -1,0 +1,59 @@
+using System;
+
+namespace 공_바꾸기_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            var input_1st = Console.ReadLine().Split(' ');
+            var basket_Cnt = int.Parse(input_1st[0]);
+            var change_Cnt = int.Parse(input_1st[1]);
+            var ball_Array = new int[basket_Cnt];
+            // ball_Array[0] = 1
+            // ball_Array[1] = 2
+            // ball_Array[2] = 3
+            // ball_Array[3] = 4
+            // ball_Array[4] = 5
+            for (int num = 0; num < ball_Array.Length; num++)
+            {
+                ball_Array[num] = num + 1;
+            }
+
+            for (int n = 0; n < change_Cnt; n++)
+            {
+                var input_2nd = Console.ReadLine().Split(' ');
+                var i = int.Parse(input_2nd[0]);
+                var j = int.Parse(input_2nd[1]);
+                var length = j - i + 1;
+                if (j - i > 1)
+                {
+                    var temp = ball_Array[i - 1];
+                    ball_Array[i - 1] = ball_Array[j - 1];
+                    ball_Array[j - 1] = temp;
+                }
+                else if (j - i == 1)
+                {
+                    Array.Reverse(ball_Array, i - 1, length);
+                }
+                else if (j - i == 0)
+                {
+                    continue;
+                }
+                else
+                {
+                    return;
+                }
+
+            }
+
+            foreach (var array in ball_Array)
+            {
+                Console.Write(array + " ");
+            }
+
+        }
+
+    }
+
+}
