@@ -1,0 +1,48 @@
+using System;
+
+namespace 별_찍기_7_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int i, j, k, l;
+            int num = int.Parse(Console.ReadLine());
+            for (i = 0; i < num; i++)
+            {
+                for (j = 0; j < num - i - 1; j++)
+                {
+                    Console.Write(" ");
+                }
+                for (k = 0; k <= i; k++)
+                {
+                    Console.Write("*");
+                }
+                for (l = 0; l < i; l++)
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine();
+            }
+            for (i = num - 2; i >= 0; i--)
+            {
+                for (j = num - i - 1; j > 0; j--)
+                {
+                    Console.Write(" ");
+                }
+                for (k = 0; k <= i; k++)
+                {
+                    Console.Write("*");
+                }
+                for (l = 0; l < i; l++)
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine();
+            }
+
+        }
+
+    }
+
+}
