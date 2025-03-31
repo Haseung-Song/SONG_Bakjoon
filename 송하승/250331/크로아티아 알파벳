@@ -1,0 +1,43 @@
+using System;
+using System.Text.RegularExpressions;
+
+namespace 크로아티아_알파벳_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            var input = Console.ReadLine();
+            int sum_Croatia = 0;
+            // "dz=" 문자는 "z=" 문자보다 먼저 처리해야 함.
+            string[] patterns = { "c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z=" };
+            foreach (var pattern in patterns)
+            {
+                if (input.Contains(pattern))
+                {
+                    // Regex (정규식) 사용, [pattern] 중복 여부 확인!
+                    var cnt_dupli = Regex.Matches(input, Regex.Escape(pattern)).Count;
+                    // 만약, 중복이면!
+                    if (cnt_dupli > 0)
+                    {
+                        sum_Croatia += cnt_dupli; // 중복 만큼 더하고
+                    }
+                    // input [pattern] => "-"로 교체
+                    var str = input.Replace(pattern, "-");
+                    input = str; // str = 삭제된 문자열 = input
+                }
+
+            }
+            // input [pattern] "-" => ""로 (교체 후)
+            input = input.Replace("-", "");
+            // 삭제 후 남은 문자열에서 알파벳 추출
+            foreach (var word in input)
+            {
+                sum_Croatia++; // 알파벳일 경우, 1 증가
+            }
+            Console.WriteLine(sum_Croatia);
+        }
+
+    }
+
+}
