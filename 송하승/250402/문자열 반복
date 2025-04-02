@@ -1,0 +1,31 @@
+using System;
+using System.Linq;
+
+namespace 문자열_반복_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            var tc = int.Parse(Console.ReadLine());
+            for (int n = 0; n < tc; n++)
+            {
+                var input = Console.ReadLine().Split(' ');
+                var repeat_Cnt = int.Parse(input[0]);
+                var length_Str = input[1];
+                for (int i = 0; i < length_Str.Length; i++)
+                {
+                    var length_Arr = input[1].ToArray();
+                    for (int j = 0; j < repeat_Cnt; j++)
+                    {
+                        Console.Write(length_Arr[i]);
+                    }
+                }
+                Console.WriteLine();
+            }
+
+        }
+
+    }
+
+}
