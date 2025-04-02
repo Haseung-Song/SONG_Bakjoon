@@ -1,0 +1,27 @@
+using System;
+using System.Linq;
+
+namespace 상수_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            var input = Console.ReadLine().Split(' ');
+
+            var fst_Arr = input[0].ToArray();
+            Array.Reverse(fst_Arr);
+            string fst_Str = new string(fst_Arr);
+            var fst_Num = int.Parse(fst_Str);
+
+            var sec_Arr = input[1].ToArray();
+            Array.Reverse(sec_Arr);
+            string sec_Str = new string(sec_Arr);
+            var sec_Num = int.Parse(sec_Str);
+
+            Console.WriteLine(Math.Max(fst_Num, sec_Num));
+        }
+
+    }
+
+}
