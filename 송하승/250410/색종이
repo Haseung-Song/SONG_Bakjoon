@@ -1,0 +1,54 @@
+using System;
+
+namespace 색종이_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            // 첫째 줄: 색종이의 수를 [count]만큼 입력
+            var count = int.Parse(Console.ReadLine());
+
+            int[] x_Arr = new int[count]; // int[] x_Arr 배열 count만큼 생성!
+            int[] y_Arr = new int[count]; // int[] y_Arr 배열 count만큼 생성!
+
+            // 전제 개념: 도화지를 배열로 표현!
+            bool[,] paper = new bool[100, 100];
+
+            for (int i = 0; i < count; i++)
+            {
+                // 둘째 줄: [i]를 [count]만큼 돌려서 입력!
+                var coord = Console.ReadLine().Split(' ');
+                var x = int.Parse(coord[0]); // x 좌표 값!
+                x_Arr[i] = x; // x 좌표: x_Arr 배열에 대입
+                var y = int.Parse(coord[1]); // y 좌표 값!
+                y_Arr[i] = y; // y 좌표: y_Arr 배열에 대입
+
+                // 10 * 10 크기의 칸에 true 값 입력
+                for (int dx = 0; dx < 10; dx++)
+                {
+                    for (int dy = 0; dy < 10; dy++)
+                    {
+                        paper[x + dx, y + dy] = true; // 가로, 세로 방향으로 해당 좌표 (x, y)에서 각각 10만큼 이동시킴. (색종이 하나의 넓이)
+                    }
+
+                }
+
+            }
+            // 검은 영역 넓이!
+            int blackArea = 0;
+            foreach (bool cell in paper)
+            {
+                // true 값인 놈만 찾아서
+                if (cell)
+                {
+                    blackArea++; // 검은 영역을 모두 찾음.
+                }
+
+            }
+            Console.WriteLine(blackArea);
+        }
+
+    }
+
+}
