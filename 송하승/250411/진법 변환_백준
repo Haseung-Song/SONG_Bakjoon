@@ -1,0 +1,62 @@
+using System;
+
+namespace 진법_변환_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            var input = Console.ReadLine().Split(' ');
+            var formation = input[0].ToUpper();
+            var number = int.Parse(input[1]);
+
+            int base_digit = 0;
+            double calc = 0;
+
+            char[] array = new char[formation.Length];
+            for (int i = 0; i < formation.Length; i++)
+            {
+                array[i] = formation[i];
+                switch (array[i])
+                {
+                    case 'A': base_digit = 10; break;
+                    case 'B': base_digit = 11; break;
+                    case 'C': base_digit = 12; break;
+                    case 'D': base_digit = 13; break;
+                    case 'E': base_digit = 14; break;
+                    case 'F': base_digit = 15; break;
+                    case 'G': base_digit = 16; break;
+                    case 'H': base_digit = 17; break;
+                    case 'I': base_digit = 18; break;
+                    case 'J': base_digit = 19; break;
+                    case 'K': base_digit = 20; break;
+                    case 'L': base_digit = 21; break;
+                    case 'M': base_digit = 22; break;
+                    case 'N': base_digit = 23; break;
+                    case 'O': base_digit = 24; break;
+                    case 'P': base_digit = 25; break;
+                    case 'Q': base_digit = 26; break;
+                    case 'R': base_digit = 27; break;
+                    case 'S': base_digit = 28; break;
+                    case 'T': base_digit = 29; break;
+                    case 'U': base_digit = 30; break;
+                    case 'V': base_digit = 31; break;
+                    case 'W': base_digit = 32; break;
+                    case 'X': base_digit = 33; break;
+                    case 'Y': base_digit = 34; break;
+                    case 'Z': base_digit = 35; break;
+                    default:
+                        // 숫자 0-9 처리 (예: '0' ~ '9')
+                        if (array[i] >= '0' && array[i] <= '9')
+                            base_digit = array[i] - '0';
+                        break;
+                }
+                // 계산 시, 지수(승)는 입력한 [문자의 개수 - 1]부터 더해가야 함.
+                calc += base_digit * Math.Pow(number, formation.Length - i - 1);
+            }
+            Console.WriteLine(calc);
+        }
+
+    }
+
+}
