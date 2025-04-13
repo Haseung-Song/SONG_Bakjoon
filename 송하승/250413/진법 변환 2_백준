@@ -1,0 +1,76 @@
+using System;
+using System.Text;
+
+namespace 진법_변환_2_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            // 입력: [10진수 숫자 (digit_Num) 및 변환할 진법 (formation)]
+            var input = Console.ReadLine().Split(' ');
+            var digit_Num = int.Parse(input[0]);         // 10진수 숫자
+            var formation = int.Parse(input[1]);         // 변환할 진법 (2 ~ 36)
+
+            int cnt = 0;
+            int[] remain = new int[100];                 // 나머지 저장 배열 (거꾸로 저장)
+            while (digit_Num > 0)
+            {
+                remain[cnt] = digit_Num % formation;     // 현재 자릿수 값 저장
+                digit_Num = digit_Num / formation;       // 몫으로 다음 자릿수 계산
+                cnt++;                                   // 자릿수 증가
+            }
+
+            string[] digit = new string[cnt];            // 각 자릿수를 문자로 저장하는 배열
+            for (int i = 0; i < cnt; i++)
+            {
+                // 10~35: A~Z로 변환
+                switch (remain[i])
+                {
+                    case 10: digit[i] = "A"; break;
+                    case 11: digit[i] = "B"; break;
+                    case 12: digit[i] = "C"; break;
+                    case 13: digit[i] = "D"; break;
+                    case 14: digit[i] = "E"; break;
+                    case 15: digit[i] = "F"; break;
+                    case 16: digit[i] = "G"; break;
+                    case 17: digit[i] = "H"; break;
+                    case 18: digit[i] = "I"; break;
+                    case 19: digit[i] = "J"; break;
+                    case 20: digit[i] = "K"; break;
+                    case 21: digit[i] = "L"; break;
+                    case 22: digit[i] = "M"; break;
+                    case 23: digit[i] = "N"; break;
+                    case 24: digit[i] = "O"; break;
+                    case 25: digit[i] = "P"; break;
+                    case 26: digit[i] = "Q"; break;
+                    case 27: digit[i] = "R"; break;
+                    case 28: digit[i] = "S"; break;
+                    case 29: digit[i] = "T"; break;
+                    case 30: digit[i] = "U"; break;
+                    case 31: digit[i] = "V"; break;
+                    case 32: digit[i] = "W"; break;
+                    case 33: digit[i] = "X"; break;
+                    case 34: digit[i] = "Y"; break;
+                    case 35: digit[i] = "Z"; break;
+
+                    default:
+                        // 숫자 0-9 처리 (예: "0" ~ "9")
+                        if (remain[i] >= 0 && remain[i] <= 9)
+                            digit[i] = remain[i].ToString();
+                        break;
+                }
+
+            }
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < digit.Length; i++)
+            {
+                sb.Append(digit[digit.Length - i - 1]);   // 역순으로 문자 이어붙이기
+            }
+            string result = sb.ToString();
+            Console.WriteLine(result);
+        }
+
+    }
+
+}
