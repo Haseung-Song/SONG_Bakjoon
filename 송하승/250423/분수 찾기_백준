@@ -1,0 +1,41 @@
+using System;
+
+namespace 분수찾기_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            var input = int.Parse(Console.ReadLine());
+            int numerator; // 분자
+            int denominator; // 분모
+            int group = 1; // 현재 대각선 그룹 번호!!!
+            int cnt = 0; // 누적된 분수 개수
+            while (true)
+            {
+                if (input <= cnt + group)
+                {
+                    int idx = input - cnt; // group 내 몇 번째 항(?)
+                    if (group % 2 == 0)
+                    {
+                        // 짝수 그룹: 분자 ++ 분모 --
+                        numerator = idx;
+                        denominator = group - idx + 1;
+                    }
+                    else
+                    {
+                        // 홀수 그룹: 분자 -- 분모 ++
+                        numerator = group - idx + 1;
+                        denominator = idx;
+                    }
+                    break;
+                }
+                cnt += group;
+                group++;
+            }
+            Console.WriteLine(numerator + "/" + denominator);
+        }
+
+    }
+
+}
