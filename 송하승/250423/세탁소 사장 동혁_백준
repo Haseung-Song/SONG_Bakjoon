@@ -1,0 +1,33 @@
+using System;
+
+namespace 세탁소_사장_동혁_백준
+{
+    /*
+     * [소수점 연산]을 사용 시, 부동소수점 오차 때문에 오류가 날 수 있음.
+     * 따라서, 되도록이면 [정수 나눗셈]을 사용하여 계산하는 편이 좋음.
+    */
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            var tc = int.Parse(Console.ReadLine()); // [테스트 케이스 tc] 입력
+            // tc만큼 반복문을 돌린 후에
+            for (int i = 0; i < tc; i++)
+            {
+                int coins = int.Parse(Console.ReadLine());
+                // 쿼터(Quarter, $0.25)의 개수
+                int quarters = (coins / 25);
+                // 다임(Dime, $0.10)의 개수
+                int dimes = (coins % 25 / 10);
+                // 니켈(Nickel, $0.05)의 개수
+                int nickels = (coins % 25 % 10 / 5);
+                // 페니(Penny, $0.01)의 개수
+                int pennies = (coins % 25 % 10 % 5 / 1);
+                Console.WriteLine(quarters + " " + dimes + " " + nickels + " " + pennies);
+            }
+
+        }
+
+    }
+
+}
