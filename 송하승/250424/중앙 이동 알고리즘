@@ -1,0 +1,29 @@
+using System;
+
+namespace 중앙_이동_알고리즘_백준
+{
+    /*
+     * 1번: 점 9개    = (2 + 1)^2
+     * 2번: 점 25개   = (3 + 2)^2
+     * 3번: 점 81개   = (5 + 4)^2
+     * 4번: 점 289개  = (9 + 8)^2
+     * 5번: 점 1089개 = (17 + 16)^2
+     */
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            // [input] 개수 만큼 Console 창에 입력 후,
+            int input = int.Parse(Console.ReadLine());
+            int fst_Val = 3; // [초깃값 = 3]
+            for (int i = 0; i < input - 1; i++)
+            {
+                fst_Val += (int)Math.Pow(2, i + 1);
+            }
+            var res = Math.Pow(fst_Val, 2);
+            Console.WriteLine(res);
+        }
+
+    }
+
+}
