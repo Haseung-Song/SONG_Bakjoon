@@ -1,0 +1,44 @@
+using System;
+
+namespace 배수와_약수_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                var input = Console.ReadLine().Split(' ');
+                int fst_Num = int.Parse(input[0]);
+                int sec_Num = int.Parse(input[1]);
+                if (fst_Num != sec_Num)
+                {
+                    if (sec_Num % fst_Num == 0)
+                    {
+                        Console.WriteLine("factor");
+                        continue;
+                    }
+                    else if (fst_Num % sec_Num == 0)
+                    {
+                        Console.WriteLine("multiple");
+                        continue;
+                    }
+                    else
+                    {
+                        Console.WriteLine("neither");
+                        continue;
+                    }
+
+                }
+                if (fst_Num == 0 && sec_Num == 0)
+                {
+                    break;
+                }
+
+            }
+
+        }
+
+    }
+
+}
