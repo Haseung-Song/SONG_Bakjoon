@@ -1,0 +1,21 @@
+using System;
+
+namespace 달팽이는_올라가고_싶다_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            var input = Console.ReadLine().Split(' ');
+            double a = int.Parse(input[0]);
+            double b = int.Parse(input[1]);
+            double v = int.Parse(input[2]);
+            // 정상에 올라간 후에는 미끄러질 일이 없기 때문에,
+            // 반드시 (v - b)를 한 번 해준 상태에서 계산을 함.
+            // 나누어 떨어지지 않는 값들은 무조건 반올림을 함.
+            Console.WriteLine(Math.Ceiling((v - b) / (a - b)));
+        }
+
+    }
+
+}
