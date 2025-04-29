@@ -1,0 +1,45 @@
+using System;
+
+namespace 벌집_백준
+{
+    /*
+     * Group 1
+       1 => 1개
+       Group 2
+       2 3 4 5 6 7  => 6개 * 1
+       Group 3
+       8 9 10 11 12 13 14 15 16 17 18 19 =>  12개 6 * 2
+       Group 4
+       20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 => 18개 6 * 3
+       Group 5
+       38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 => 24개 6 * 4
+       30개
+       36개
+       ...
+       6n개
+       Ex. 13 => Group 3
+       Ex. 58 => Group 5
+    */
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int input = int.Parse(Console.ReadLine());
+            int group = 2;
+            int cnt = 1;
+            if (input == 1)
+            {
+                Console.WriteLine(1);
+                return;
+            }
+            while (input > 1 + 6 * (cnt * (cnt + 1) / 2))
+            {
+                cnt++;
+                group++;
+            }
+            Console.WriteLine(group);
+        }
+
+    }
+
+}
