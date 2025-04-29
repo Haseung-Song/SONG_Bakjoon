@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+
+namespace 약수_구하기_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            var input = Console.ReadLine().Split(' ');
+            int p = int.Parse(input[0]);
+            int k = int.Parse(input[1]);
+            int q = 1;
+            var lst = new List<int>();
+            while (p >= q)
+            {
+                if (p % q == 0)
+                {
+                    lst.Add(q);
+                }
+                q++;
+            }
+            lst.Sort();
+            if (lst.Count >= k)
+            {
+                Console.WriteLine(lst[k - 1]); // k번째로 작은 수 반환
+            }
+            else
+            {
+                Console.WriteLine(0);
+            }
+
+        }
+
+    }
+
+}
