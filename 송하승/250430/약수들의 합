@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+
+namespace 약수들의_합_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                int num = int.Parse(Console.ReadLine());
+                int p = 1;
+                int sum = 0;
+                var lst = new List<int>();
+                if (num == -1) break;
+                while (num > p)
+                {
+                    if (num % p == 0)
+                    {
+                        lst.Add(p);
+                    }
+                    p++;
+                }
+                foreach (var q in lst)
+                {
+                    sum += q;
+                }
+                if (num == sum)
+                {
+                    Console.WriteLine($"{num} = {string.Join(" + ", lst)}");
+                }
+                else
+                {
+                    Console.WriteLine($"{num} is NOT perfect.");
+                }
+
+            }
+
+        }
+
+    }
+
+}
