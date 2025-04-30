@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+
+namespace 소수_찾기_백준
+{
+    public class Program
+    {
+        /*
+         * 소수란? [1과 자기 자신]만을 약수로 갖는 수
+         * 또한, 소수의 약수는 무조건 2개
+        */
+        static void Main(string[] args)
+        {
+            var input_Cnt = int.Parse(Console.ReadLine());
+            var dec_Num = Console.ReadLine().Split(' ');
+            var dec_Cnt = 0;
+            for (int n = 0; n < input_Cnt; n++)
+            {
+                var nat_Num = int.Parse(dec_Num[n]);
+                var lst = new List<int>();
+                var num = 1;
+                while (nat_Num >= 2 && nat_Num >= num)
+                {
+                    if (nat_Num % num == 0)
+                    {
+                        lst.Add(num);
+                    }
+                    num++;
+                }
+                if (lst.Count == 2)
+                {
+                    dec_Cnt++;
+                }
+
+            }
+            Console.WriteLine(dec_Cnt); // 소수의 개수 출력
+        }
+
+    }
+
+}
