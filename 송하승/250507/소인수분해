@@ -1,0 +1,62 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace 소인수분해_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            var input = int.Parse(Console.ReadLine());
+            if (input == 1) return;
+            int num = 1;
+            var num_lst = new List<int>();
+            while (input >= num)
+            {
+                if (input % num == 0)
+                {
+                    num_lst.Add(num);
+                }
+                num++;
+            }
+            var prime_N = num_lst.Where(IsPrime).ToList();
+            var primes_F = new List<int>();
+            for (int n = 0; n < prime_N.Count; n++)
+            {
+                while (input % prime_N[n] == 0)
+                {
+                    primes_F.Add(prime_N[n]);
+                    input /= prime_N[n];
+                }
+
+            }
+            for (int j = 0; j < primes_F.Count; j++)
+            {
+                Console.WriteLine(primes_F[j]);
+            }
+
+        }
+
+        /// <summary>
+        /// 소수 찾기!
+        /// </summary>
+        /// <param name="num"></param>
+        /// <returns></returns>
+        static bool IsPrime(int num)
+        {
+            if (num < 2) return false;
+            for (int i = 2; i * i <= num; i++)
+            {
+                if (num % i == 0)
+                {
+                    return false;
+                }
+
+            }
+            return true;
+        }
+
+    }
+
+}
