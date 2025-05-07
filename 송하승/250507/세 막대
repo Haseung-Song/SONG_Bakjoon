@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace 세_막대_백준
+{
+    public class Program
+    {
+        /*
+         * 삼각형의 조건: 세 변의 길이가 주어졌을 때,
+         * 두 변의 길이의 합이 나머지 한 변의 길이보다 커야 함.
+         * 즉, 가장 큰 변의 합은 다른 두 변의 길이의 합보다 큼.
+         * 그렇지 않으면, 삼각형의 조건에 부합하지 않음을 확인.
+         */
+        static void Main(string[] args)
+        {
+            var input = Console.ReadLine().Split(' ');
+            var lst = new List<int>();
+            var a = int.Parse(input[0]);
+            lst.Add(a);
+            var b = int.Parse(input[1]);
+            lst.Add(b);
+            var c = int.Parse(input[2]);
+            lst.Add(c);
+            lst.Sort();
+            if (lst[0] + lst[1] <= lst[2])
+            {
+                lst[2] = lst[0] + lst[1] - 1;
+                Console.WriteLine(lst.Sum());
+            }
+            // 삼각형의 조건을 만족하는 경우!
+            else
+            {
+                Console.WriteLine(lst.Sum());
+            }
+
+        }
+
+    }
+
+}
