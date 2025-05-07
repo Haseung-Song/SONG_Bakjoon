@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace 소수_백준
+{
+    public class Program
+    {
+        /*
+        * 소수란? [1과 자기 자신]만을 약수로 갖는 수
+        * 또한, 소수의 약수는 무조건 2개
+        */
+        static void Main(string[] args)
+        {
+            int num_M = int.Parse(Console.ReadLine());
+            int num_N = int.Parse(Console.ReadLine());
+            var dec_lst = new List<int>();
+            for (int n = num_M; n <= num_N; n++)
+            {
+                var num = 1;
+                var num_lst = new List<int>();
+                while (n >= num)
+                {
+                    if (n % num == 0)
+                    {
+                        num_lst.Add(num);
+                    }
+                    num++;
+                }
+                if (num_lst.Count == 2)
+                {
+                    dec_lst.Add(n);
+                }
+
+            }
+            if (dec_lst.Count == 0)
+            {
+                Console.WriteLine(-1);
+            }
+            else
+            {
+                // 소수의 합 반환 => [총 합] 반환
+                Console.WriteLine(dec_lst.Sum());
+                // 소수 중 최솟값 반환 => [첫번째 요소] 반환
+                Console.Write(dec_lst.First());
+                //Console.Write(dec_lst.Min());
+            }
+
+        }
+
+    }
+
+}
