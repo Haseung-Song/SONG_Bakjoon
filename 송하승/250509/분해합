@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace 분해합_백준
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            var input_Num = Console.ReadLine();
+            var digit_Lst = new List<int>();
+            var const_Lst = new List<int>();
+            for (int n = input_Num.Length; n < input_Num.Length * 9; n++)
+            {
+                var output_Num = int.Parse(input_Num) - n;
+                var output_Str = output_Num.ToString();
+                for (int i = 0; i < output_Str.Length; i++)
+                {
+                    var digit = output_Str[i];
+                    digit_Lst.Add(digit - '0');
+                }
+                if (n == digit_Lst.Sum())
+                {
+                    const_Lst.Add(n);
+                }
+                digit_Lst.Clear();
+            }
+            // 생성자가 있는 경우는,
+            if (const_Lst.Count > 0)
+            {
+                Console.WriteLine(int.Parse(input_Num) - const_Lst.Max()); // N의 가장 작은 생성자를 출력
+            }
+            // 생성자가 없는 경우는,
+            else
+            {
+                Console.WriteLine(0); // 0을 출력
+            }
+
+        }
+
+    }
+
+}
