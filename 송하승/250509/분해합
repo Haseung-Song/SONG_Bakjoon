@@ -6,6 +6,23 @@ namespace 분해합_백준
 {
     public class Program
     {
+        /*
+         * N이 1자릿수일 경우 (1 ~ 9)
+         * Ex. 2, 4, 8
+
+         * 2 = 1 + 1
+         * 4 = 2 + 2
+         * 8 = 4 + 4
+
+         * N이 2자릿수일 경우 (2 ~ 18)
+         * N = M - (2 ~ 18)
+
+         * N이 3자릿수일 경우 (3 ~ 27)
+         * N = M - (3 ~ 27)
+
+         * N이 4자릿수일 경우 (4 ~ 36)
+         * N = M - (4 ~ 36)
+        */
         static void Main(string[] args)
         {
             var input_Num = Console.ReadLine();
